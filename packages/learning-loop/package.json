@@ -1,0 +1,19 @@
+{
+  "name": "@orqenix-pro/learning-loop",
+  "version": "0.4.0",
+  "license": "SEE LICENSE IN ../../LICENSE",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@orqenix-pro/license": "workspace:*"
+  },
+  "devDependencies": {
+    "vitest": "^1.6.0",
+    "typescript": "^5.4.0"
+  }
+}
