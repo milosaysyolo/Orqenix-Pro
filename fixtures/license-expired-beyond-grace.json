@@ -1,0 +1,10 @@
+{
+  "customerId": "cust-3",
+  "plan": "pro",
+  "issuedAt": 1775088000000,
+  "expiresAt": 1779580800000,
+  "features": [
+    "learning-loop"
+  ],
+  "signature": "fEngvlsP+CF+5VFWH3d3JTxC41NvJGhSrhihoH0tWrjZvTXp3gFNAO80+ZPMvG/BRyQah7AIxCx43fIeTtbKDQ=="
+}

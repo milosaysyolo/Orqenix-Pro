@@ -1,0 +1,10 @@
+{
+  "customerId": "attacker",
+  "plan": "pro",
+  "issuedAt": 1779408000000,
+  "expiresAt": 1782864000000,
+  "features": [
+    "learning-loop"
+  ],
+  "signature": "1dD7jqiV5Bm6a3u6dbx0yNxm9TpTRPnPhSufJmnSVx3THxyeyIjaYw+B8q74x/COja8g/rzDW/e9hvhu0REUDg=="
+}

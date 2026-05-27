@@ -1,16 +1,31 @@
 {
-  "name": "orqenix-pro",
+  "name": "orqenix-pro-monorepo",
   "private": true,
-  "packageManager": "pnpm@9.0.0",
+  "version": "0.4.0-phase-4",
+  "type": "module",
+  "packageManager": "pnpm@9.12.0",
+  "engines": { "node": ">=20", "pnpm": ">=9" },
   "scripts": {
     "build": "turbo run build",
+    "typecheck": "turbo run typecheck",
     "test": "turbo run test",
-    "typecheck": "turbo run typecheck"
+    "test:license-grace": "tsx scripts/test-license-grace.ts",
+    "generate-test-keys": "tsx scripts/generate-test-keys.ts",
+    "lint": "turbo run lint",
+    "clean": "turbo run clean && rimraf node_modules"
   },
   "devDependencies": {
-    "turbo": "^2.0.0",
-    "typescript": "^5.4.0",
-    "prettier": "^3.2.0",
-    "vitest": "^1.6.0"
+    "@types/node": "^22.10.0",
+    "rimraf": "^6.0.1",
+    "tsup": "^8.3.5",
+    "tsx": "^4.19.2",
+    "turbo": "^2.3.3",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  },
+  "pnpm": {
+    "overrides": {
+      "protobufjs": "^7.5.8"
+    }
   }
 }
