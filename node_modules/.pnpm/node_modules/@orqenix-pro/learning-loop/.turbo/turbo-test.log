@@ -1,0 +1,14 @@
+
+> @orqenix-pro/learning-loop@0.4.0-phase-4 test C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\packages\learning-loop
+> vitest run
+
+
+[1m[7m[36m RUN [39m[27m[22m [36mv2.1.9 [39m[90mC:/Users/vnet-1-vm-c1/Documents/GitHub/Orqenix-Pro/packages/learning-loop[39m
+
+ [32m✓[39m test/learning-loop.test.ts [2m([22m[2m4 tests[22m[2m)[22m[90m 5[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[32m4 passed[39m[22m[90m (4)[39m
+[2m   Start at [22m 11:35:56
+[2m   Duration [22m 1.12s[2m (transform 184ms, setup 0ms, collect 182ms, tests 5ms, environment 1ms, prepare 231ms)[22m
+
