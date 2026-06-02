@@ -10,4 +10,4 @@ packages/*/node_modules/
 packages/*/.vite/
 packages/*/coverage/
 .orqenix-pro/
-scripts/gates/
+
