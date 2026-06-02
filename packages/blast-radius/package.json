@@ -1,0 +1,20 @@
+{
+  "name": "@orqenix-pro/blast-radius",
+  "version": "0.5.0-phase-5",
+  "description": "Per-scope write quotas + cap propagation for blast-radius containment (Orqenix-Pro)",
+  "license": "BUSL-1.1",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": { ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js", "default": "./dist/index.js" } },
+  "scripts": { "build": "tsc --build", "test": "vitest run" },
+  "dependencies": {
+    "@orqenix/core": "file:../../../Orqenix/packages/core",
+    "@orqenix/scope-identity": "file:../../../Orqenix/packages/scope-identity",
+    "@orqenix/storage-sqlite": "file:../../../Orqenix/packages/storage-sqlite",
+    "@orqenix/audit-log": "file:../../../Orqenix/packages/audit-log",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": { "vitest": "^1.6.0", "typescript": "^5.5.0" },
+  "files": ["dist", "README.md", "LICENSE"]
+}

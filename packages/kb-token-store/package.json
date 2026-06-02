@@ -1,0 +1,19 @@
+{
+  "name": "@orqenix-pro/kb-token-store",
+  "version": "0.5.0-phase-5",
+  "description": "LMDB-backed token verifier cache (Orqenix-Pro)",
+  "license": "BUSL-1.1",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": { ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js", "default": "./dist/index.js" } },
+  "scripts": { "build": "tsc --build", "test": "vitest run" },
+  "dependencies": {
+    "@orqenix/core": "file:../../../Orqenix/packages/core",
+    "@orqenix/capability-tokens": "file:../../../Orqenix/packages/capability-tokens",
+    "lmdb": "^3.0.13",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": { "vitest": "^1.6.0", "typescript": "^5.5.0" },
+  "files": ["dist", "README.md", "LICENSE"]
+}

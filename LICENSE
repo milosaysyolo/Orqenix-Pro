@@ -1,37 +1,25 @@
 Business Source License 1.1
 
-Licensor:           Milo Nguyen
-Licensed Work:      Orqenix-Pro
-                    Copyright (c) 2026 Milo Nguyen
-Additional Use Grant: You may use the Licensed Work for non-production
-                      evaluation, internal development, and testing.
-Change Date:        2030-01-01
-Change License:     Apache License, Version 2.0
+Parameters
 
-Business Source License 1.1
+Licensor:             Orqenix (Milo Nguyen)
+Licensed Work:        Orqenix-Pro v0.5.0-phase-5
+                      The Licensed Work is (c) 2026 Orqenix Contributors.
 
-Terms
+Additional Use Grant: You may make use of the Licensed Work, provided that
+                      you may not use the Licensed Work for a Commercial
+                      Knowledge Mesh Service offered by you to third parties
+                      that competes with Orqenix Cloud.
 
-The Licensor hereby grants you the right to copy, modify, create derivative
-works, redistribute, and make non-production use of the Licensed Work, subject
-to the following conditions:
+                      A "Commercial Knowledge Mesh Service" is a commercial
+                      offering that allows third parties (other than your
+                      employees and contractors) to access the functionality
+                      of the Licensed Work so that such third parties directly
+                      benefit from the Licensed Work as a service.
 
-1. You may not use the Licensed Work for production use or commercial
-   hosting unless you have a separate written agreement with the Licensor.
+Change Date:          Four years from the date the Licensed Work is published.
 
-2. You must include a copy of this license in all copies of the Licensed Work.
+Change License:       Apache License, Version 2.0
 
-3. If you modify the Licensed Work, you must cause the modified files to
-   carry prominent notices stating that you changed the files and the date
-   of any change.
-
-The Licensed Work is provided "as is", without warranty of any kind, express
-or implied, including but not limited to the warranties of merchantability,
-fitness for a particular purpose and noninfringement. In no event shall the
-Licensor be liable for any claim, damages or other liability, whether in an
-action of contract, tort or otherwise, arising from, out of or in connection
-with the Licensed Work or the use or other dealings in the Licensed Work.
-
-Upon the Change Date, the Licensed Work will become available under the
-Apache License, Version 2.0 (the "Change License"). Thereafter you may use
-the Licensed Work under the terms of the Change License.
+For information about alternative licensing arrangements for the Licensed Work,
+please visit https://orqenix.dev/licensing

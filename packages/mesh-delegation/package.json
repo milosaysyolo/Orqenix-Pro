@@ -1,0 +1,23 @@
+{
+  "name": "@orqenix-pro/mesh-delegation",
+  "version": "0.5.0-phase-5",
+  "description": "Multi-hop mesh delegation chains with capability token + provenance lineage (Orqenix-Pro)",
+  "license": "BUSL-1.1",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": { ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js", "default": "./dist/index.js" } },
+  "scripts": { "build": "tsc --build", "test": "vitest run" },
+  "dependencies": {
+    "@orqenix/core": "file:../../../Orqenix/packages/core",
+    "@orqenix/scope-identity": "file:../../../Orqenix/packages/scope-identity",
+    "@orqenix/capability-tokens": "file:../../../Orqenix/packages/capability-tokens",
+    "@orqenix/scope-link": "file:../../../Orqenix/packages/scope-link",
+    "@orqenix/mesh-routing": "file:../../../Orqenix/packages/mesh-routing",
+    "@orqenix/provenance": "file:../../../Orqenix/packages/provenance",
+    "@orqenix/storage-sqlite": "file:../../../Orqenix/packages/storage-sqlite",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": { "vitest": "^1.6.0", "typescript": "^5.5.0" },
+  "files": ["dist", "README.md", "LICENSE"]
+}

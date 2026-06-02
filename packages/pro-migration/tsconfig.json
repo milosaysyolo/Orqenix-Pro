@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": { "composite": true, "outDir": "./dist", "rootDir": "./src", "tsBuildInfoFile": "./dist/.tsbuildinfo" },
+  "include": ["src/**/*"], "exclude": ["dist", "node_modules", "**/*.test.ts"],
+  "references": [
+    { "path": "../kb-code-graph" },
+    { "path": "../kb-embedding-lance" },
+    { "path": "../kb-token-store" }
+  ]
+}

@@ -1,31 +1,65 @@
 {
-  "name": "orqenix-pro-monorepo",
+  "name": "@orqenix-pro/root",
+  "version": "0.5.0-phase-5",
   "private": true,
-  "version": "0.4.0-phase-4",
+  "description": "Orqenix-Pro — Polyglot storage + LLM distillation + mesh delegation + blast-radius (BSL-1.1)",
+  "license": "BUSL-1.1",
   "type": "module",
-  "packageManager": "pnpm@9.12.0",
-  "engines": { "node": ">=20", "pnpm": ">=9" },
   "scripts": {
-    "build": "turbo run build",
-    "typecheck": "turbo run typecheck",
-    "test": "turbo run test",
-    "test:license-grace": "tsx scripts/test-license-grace.ts",
-    "generate-test-keys": "tsx scripts/generate-test-keys.ts",
-    "lint": "turbo run lint",
-    "clean": "turbo run clean && rimraf node_modules"
+    "build": "pnpm -r build",
+    "test": "pnpm -r test",
+    "lint": "pnpm -r lint",
+    "verify-pro": "pnpm tsx scripts/gates/run-all-pro.ts"
   },
+  "workspaces": ["packages/*"],
   "devDependencies": {
-    "@types/node": "^22.10.0",
-    "rimraf": "^6.0.1",
-    "tsup": "^8.3.5",
-    "tsx": "^4.19.2",
-    "turbo": "^2.3.3",
-    "typescript": "^5.7.2",
-    "vitest": "^2.1.8"
+    "typescript": "^5.5.0",
+    "tsx": "^4.16.0",
+    "vitest": "^1.6.0",
+    "@orqenix-pro/kb-code-graph": "workspace:*",
+    "@orqenix-pro/kb-embedding-lance": "workspace:*",
+    "@orqenix-pro/kb-token-store": "workspace:*",
+    "@orqenix-pro/pro-migration": "workspace:*",
+    "@orqenix-pro/memory-distiller-llm": "workspace:*",
+    "@orqenix-pro/mesh-delegation": "workspace:*",
+    "@orqenix-pro/blast-radius": "workspace:*",
+    "@orqenix/storage-sqlite": "*",
+    "@orqenix/storage-diff": "*",
+    "@orqenix/kb-chat": "*",
+    "@orqenix/memory-tiers": "*",
+    "@orqenix/llm-adapter-ollama": "*",
+    "@orqenix/scope-link": "*",
+    "@orqenix/mesh-routing": "*",
+    "@orqenix/provenance": "*",
+    "@orqenix/workspace": "*",
+    "@orqenix/hooks": "*",
+    "@orqenix/telemetry": "*",
+    "@orqenix/detach": "*",
+    "@orqenix/audit-log": "*"
   },
-  "pnpm": {
+  "engines": {
+    "node": ">=20",
+    "pnpm": ">=9"
+  },
+    "pnpm": {
     "overrides": {
-      "protobufjs": "^7.5.8"
+      "@orqenix/core": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\core",
+      "@orqenix/capability-tokens": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\capability-tokens",
+      "@orqenix/scope-identity": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\scope-identity",
+      "@orqenix/storage-sqlite": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\storage-sqlite",
+      "@orqenix/storage-diff": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\storage-diff",
+      "@orqenix/memory-tiers": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\memory-tiers",
+      "@orqenix/memory-distiller": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\memory-distiller",
+      "@orqenix/llm-adapter-ollama": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\llm-adapter-ollama",
+      "@orqenix/kb-chat": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\kb-chat",
+      "@orqenix/mesh-routing": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\mesh-routing",
+      "@orqenix/scope-link": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\scope-link",
+      "@orqenix/provenance": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\provenance",
+      "@orqenix/hooks": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\hooks",
+      "@orqenix/telemetry": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\telemetry",
+      "@orqenix/detach": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\detach",
+      "@orqenix/audit-log": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\audit-log",
+      "@orqenix/workspace": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\workspace"
     }
   }
 }
