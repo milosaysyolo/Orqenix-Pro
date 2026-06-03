@@ -35,7 +35,9 @@
     "@orqenix/hooks": "*",
     "@orqenix/telemetry": "*",
     "@orqenix/detach": "*",
-    "@orqenix/audit-log": "*"
+    "@orqenix/audit-log": "*",
+    "@orqenix/prompt-rewriter": "*",
+    "@orqenix/memory-distiller": "*"
   },
   "engines": {
     "node": ">=20",
@@ -59,7 +61,8 @@
       "@orqenix/telemetry": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\telemetry",
       "@orqenix/detach": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\detach",
       "@orqenix/audit-log": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\audit-log",
-      "@orqenix/workspace": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\workspace"
+      "@orqenix/workspace": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\workspace",
+      "@orqenix/prompt-rewriter": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\prompt-rewriter"
     }
   }
 }

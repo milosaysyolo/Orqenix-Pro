@@ -22,6 +22,7 @@ overrides:
   '@orqenix/detach': C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\detach
   '@orqenix/audit-log': C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\audit-log
   '@orqenix/workspace': C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\workspace
+  '@orqenix/prompt-rewriter': C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\prompt-rewriter
 
 importers:
 
@@ -63,12 +64,18 @@ importers:
       '@orqenix/llm-adapter-ollama':
         specifier: C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\llm-adapter-ollama
         version: link:../Orqenix/packages/llm-adapter-ollama
+      '@orqenix/memory-distiller':
+        specifier: C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\memory-distiller
+        version: link:../Orqenix/packages/memory-distiller
       '@orqenix/memory-tiers':
         specifier: C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\memory-tiers
         version: link:../Orqenix/packages/memory-tiers
       '@orqenix/mesh-routing':
         specifier: C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\mesh-routing
         version: link:../Orqenix/packages/mesh-routing
+      '@orqenix/prompt-rewriter':
+        specifier: C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\prompt-rewriter
+        version: link:../Orqenix/packages/prompt-rewriter
       '@orqenix/provenance':
         specifier: C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\provenance
         version: link:../Orqenix/packages/provenance
@@ -114,6 +121,79 @@ importers:
       zod:
         specifier: ^3.23.8
         version: 3.25.76
+    devDependencies:
+      typescript:
+        specifier: ^5.5.0
+        version: 5.9.3
+      vitest:
+        specifier: ^1.6.0
+        version: 1.6.1(@types/node@22.19.19)
+
+  packages/integration-tests:
+    dependencies:
+      '@orqenix-pro/blast-radius':
+        specifier: workspace:*
+        version: link:../blast-radius
+      '@orqenix-pro/kb-code-graph':
+        specifier: workspace:*
+        version: link:../kb-code-graph
+      '@orqenix-pro/kb-embedding-lance':
+        specifier: workspace:*
+        version: link:../kb-embedding-lance
+      '@orqenix-pro/kb-token-store':
+        specifier: workspace:*
+        version: link:../kb-token-store
+      '@orqenix-pro/memory-distiller-llm':
+        specifier: workspace:*
+        version: link:../memory-distiller-llm
+      '@orqenix-pro/mesh-delegation':
+        specifier: workspace:*
+        version: link:../mesh-delegation
+      '@orqenix-pro/pro-migration':
+        specifier: workspace:*
+        version: link:../pro-migration
+      '@orqenix/audit-log':
+        specifier: C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\audit-log
+        version: link:../../../Orqenix/packages/audit-log
+      '@orqenix/core':
+        specifier: C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\core
+        version: link:../../../Orqenix/packages/core
+      '@orqenix/detach':
+        specifier: C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\detach
+        version: link:../../../Orqenix/packages/detach
+      '@orqenix/kb-chat':
+        specifier: C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\kb-chat
+        version: link:../../../Orqenix/packages/kb-chat
+      '@orqenix/llm-adapter-ollama':
+        specifier: C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\llm-adapter-ollama
+        version: link:../../../Orqenix/packages/llm-adapter-ollama
+      '@orqenix/memory-distiller':
+        specifier: C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\memory-distiller
+        version: link:../../../Orqenix/packages/memory-distiller
+      '@orqenix/memory-tiers':
+        specifier: C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\memory-tiers
+        version: link:../../../Orqenix/packages/memory-tiers
+      '@orqenix/mesh-routing':
+        specifier: C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\mesh-routing
+        version: link:../../../Orqenix/packages/mesh-routing
+      '@orqenix/prompt-rewriter':
+        specifier: C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\prompt-rewriter
+        version: link:../../../Orqenix/packages/prompt-rewriter
+      '@orqenix/provenance':
+        specifier: C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\provenance
+        version: link:../../../Orqenix/packages/provenance
+      '@orqenix/scope-link':
+        specifier: C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\scope-link
+        version: link:../../../Orqenix/packages/scope-link
+      '@orqenix/storage-diff':
+        specifier: C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\storage-diff
+        version: link:../../../Orqenix/packages/storage-diff
+      '@orqenix/storage-sqlite':
+        specifier: C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\storage-sqlite
+        version: link:../../../Orqenix/packages/storage-sqlite
+      '@orqenix/workspace':
+        specifier: C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\workspace
+        version: link:../../../Orqenix/packages/workspace
     devDependencies:
       typescript:
         specifier: ^5.5.0
