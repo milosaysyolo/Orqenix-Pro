@@ -1,0 +1,17 @@
+Phase 5 Pro Tier — v0.5.0-phase-5
+
+8 packages (7 production + 1 interop test suite), ~8,320 LOC,
+4 Pro charter gates with 41 checks, plus 21 OSS↔Pro interop test cases.
+ALL GREEN.
+
+Highlights:
+  - Polyglot backends: Kuzu (code graph), LanceDB (vectors), LMDB (tokens)
+  - LLM-based distillation with 13 memory types and 2-pass verification
+  - Multi-hop mesh delegation up to depth 8 with capability narrowing
+  - 5-quota blast-radius containment with windowed counters
+  - OSS to Pro backend migration tooling with count verification
+  - 21 OSS↔Pro interop test cases validating Pro extends OSS correctly
+
+License: Business Source License 1.1 (change date 4 years to Apache 2.0).
+
+See CHANGELOG.md and RELEASE_NOTES.md for full detail.
