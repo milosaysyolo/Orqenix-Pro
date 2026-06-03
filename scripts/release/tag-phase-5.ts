@@ -32,7 +32,8 @@ interface ReleaseReport {
 }
 
 function run(cmd: string, opts: { silent?: boolean } = {}): string {
-  return execSync(cmd, { cwd: REPO_ROOT, stdio: opts.silent ? 'pipe' : 'inherit', encoding: 'utf-8' }).trim();
+  const result = execSync(cmd, { cwd: REPO_ROOT, stdio: opts.silent ? 'pipe' : 'inherit', encoding: 'utf-8' });
+  return (result ?? '').trim();
 }
 
 function tryRun(cmd: string): string | null {
@@ -138,7 +139,7 @@ async function main(): Promise<void> {
   console.log(`Wrote: ${changed.join(', ')}`);
 
   // refresh lockfile (no actual install change unless dependencies drifted)
-  try { run('pnpm install --lockfile-only'); }
+  try { run('pnpm install --lockfile-only', { silent: true }); }
   catch { /* lockfile already current */ }
 
   const commitMsg = kind === 'main' ? COMMIT_MSG_MAIN : COMMIT_MSG_PRO;
