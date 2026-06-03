@@ -1,0 +1,16 @@
+schemaVersion: 1
+id: G36-pro
+title: Mesh Delegation Chain
+bsRef: Orqenix-Pro/docs/sdd/BS-pro-003-mesh-delegation.md
+dependsOn: [G1, G26, G27, G28, G29, G33, G34]
+tier: pro
+criteria:
+  - { id: G36-pro.1, description: "mesh-delegation unit tests pass",                              severity: blocking }
+  - { id: G36-pro.2, description: "startChain produces valid 1-step chain",                       severity: blocking }
+  - { id: G36-pro.3, description: "3-hop chain builds + validates",                               severity: blocking }
+  - { id: G36-pro.4, description: "appendStep rejects widening caps",                             severity: blocking }
+  - { id: G36-pro.5, description: "appendStep rejects exceeding maxDepth",                        severity: blocking }
+  - { id: G36-pro.6, description: "validate catches mismatched delegator-delegate linkage",       severity: blocking }
+  - { id: G36-pro.7, description: "delegatedQuery routes to final delegate end-to-end",           severity: blocking }
+  - { id: G36-pro.8, description: "maxAllowedDepth = 8 per CR v7.1",                              severity: blocking }
+artifacts: { reportDir: .orqenix-pro/gate-reports/, reportPattern: "G36-pro-*.json" }

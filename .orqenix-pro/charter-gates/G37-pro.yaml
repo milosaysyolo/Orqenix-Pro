@@ -1,0 +1,17 @@
+schemaVersion: 1
+id: G37-pro
+title: Blast Radius Containment
+bsRef: Orqenix-Pro/docs/sdd/BS-pro-004-blast-radius.md
+dependsOn: [G1, G2, G17, G18, G30]
+tier: pro
+criteria:
+  - { id: G37-pro.1, description: "blast-radius unit tests pass",                                 severity: blocking }
+  - { id: G37-pro.2, description: "setQuota + getQuota round-trip",                               severity: blocking }
+  - { id: G37-pro.3, description: "consume increments + QuotaExceededError on overflow",          severity: blocking }
+  - { id: G37-pro.4, description: "consume throws QuotaNotConfiguredError when no quota set",     severity: blocking }
+  - { id: G37-pro.5, description: "window rolls over with advancing clock",                       severity: blocking }
+  - { id: G37-pro.6, description: "usage reports zero before any consume",                        severity: blocking }
+  - { id: G37-pro.7, description: "setQuota upserts on conflict",                                 severity: blocking }
+  - { id: G37-pro.8, description: "resetWindow zeroes current bucket",                            severity: blocking }
+  - { id: G37-pro.9, description: "QUOTA_KINDS has all 5 required kinds",                         severity: blocking }
+artifacts: { reportDir: .orqenix-pro/gate-reports/, reportPattern: "G37-pro-*.json" }

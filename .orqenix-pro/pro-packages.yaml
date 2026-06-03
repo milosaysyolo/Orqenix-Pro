@@ -1,0 +1,15 @@
+schemaVersion: 1
+totalCount: 7
+bsRef: Orqenix-Pro/docs/sdd/BS-pro-000-package-manifest.md
+license: BUSL-1.1
+changeDate: 4 years from publish
+changeLicense: Apache-2.0
+
+packages:
+  - { name: '@orqenix-pro/kb-code-graph',         path: packages/kb-code-graph,         migrationId: 100, hasMigration: false, ships: Part-10A, gate: G18-pro }
+  - { name: '@orqenix-pro/kb-embedding-lance',    path: packages/kb-embedding-lance,    migrationId: 110, hasMigration: false, ships: Part-10A, gate: G18-pro }
+  - { name: '@orqenix-pro/kb-token-store',        path: packages/kb-token-store,        migrationId: 120, hasMigration: false, ships: Part-10B, gate: G18-pro }
+  - { name: '@orqenix-pro/pro-migration',         path: packages/pro-migration,         migrationId: null, hasMigration: false, ships: Part-10B, gate: G18-pro }
+  - { name: '@orqenix-pro/memory-distiller-llm',  path: packages/memory-distiller-llm,  migrationId: 130, hasMigration: false, ships: Part-11A, gate: G6-pro,  notes: 'uses OSS memory_distiller_watermarks table' }
+  - { name: '@orqenix-pro/mesh-delegation',       path: packages/mesh-delegation,       migrationId: 140, hasMigration: false, ships: Part-11B, gate: G36-pro, notes: 'stateless chain validation' }
+  - { name: '@orqenix-pro/blast-radius',          path: packages/blast-radius,          migrationId: 150, hasMigration: true,  ships: Part-11B, gate: G37-pro }

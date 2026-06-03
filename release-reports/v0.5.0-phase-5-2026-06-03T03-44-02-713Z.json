@@ -1,0 +1,15 @@
+{
+  "repoKind": "pro",
+  "tagName": "v0.5.0-phase-5",
+  "commitSha": "74bb5c0a07487b7f8a1b827f82522d3ecf9812f9",
+  "changedFiles": [
+    "CHANGELOG.md",
+    "RELEASE_NOTES.md",
+    "README.md"
+  ],
+  "pushedToOrigin": true,
+  "dryRun": false,
+  "durationMs": 6090,
+  "startedAt": "2026-06-03T03:44:02.713Z",
+  "finishedAt": "2026-06-03T03:44:08.804Z"
+}

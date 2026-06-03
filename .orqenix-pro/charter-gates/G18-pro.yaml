@@ -1,0 +1,21 @@
+schemaVersion: 1
+id: G18-pro
+title: Polyglot Backend Conformance
+bsRef: Orqenix-Pro/docs/sdd/BS-pro-001-polyglot-backends.md
+dependsOn: [G1, G2, G3, G18, G26, G27]
+tier: pro
+criteria:
+  - { id: G18-pro.1,  description: "kb-code-graph unit tests pass",                                severity: blocking }
+  - { id: G18-pro.2,  description: "kb-embedding-lance unit tests pass",                           severity: blocking }
+  - { id: G18-pro.3,  description: "kb-token-store unit tests pass",                               severity: blocking }
+  - { id: G18-pro.4,  description: "pro-migration unit tests pass",                                severity: blocking }
+  - { id: G18-pro.5,  description: "code-graph contract: add+get+neighbors round-trip",            severity: blocking }
+  - { id: G18-pro.6,  description: "code-graph contract: addEdge rejects missing endpoint",        severity: blocking }
+  - { id: G18-pro.7,  description: "embedding contract: cosine ANN search returns nearest",        severity: blocking }
+  - { id: G18-pro.8,  description: "embedding contract: rejects dimension mismatch",               severity: blocking }
+  - { id: G18-pro.9,  description: "token-store contract: hit/miss + expiration counted",          severity: blocking }
+  - { id: G18-pro.10, description: "token-store contract: invalidateScope per-scope removal",      severity: blocking }
+  - { id: G18-pro.11, description: "pro-migration: code-graph migrate + verify",                   severity: blocking }
+  - { id: G18-pro.12, description: "pro-migration: detects count drift via verification error",    severity: blocking }
+  - { id: G18-pro.13, description: "pro-migration: token-store migration excludes expired",        severity: blocking }
+artifacts: { reportDir: .orqenix-pro/gate-reports/, reportPattern: "G18-pro-*.json" }

@@ -1,0 +1,121 @@
+# Orqenix-Pro Release Policy
+# Version: 1
+# Authoritative reference for the release-lead agent and CI.
+
+version: 1
+repo: github.com/milosaysyolo/Orqenix-Pro
+registry: https://registry.npmjs.org/
+
+scopes:
+  "@orqenix/*":
+    license: Apache-2.0
+    access: public
+    provenance: true
+    publishable_from_this_repo: false
+
+  "@orqenix-pro/*":
+    license: BUSL-1.1
+    access: public
+    provenance: true
+    publishable_from_this_repo: true
+
+  "@orqenix-cloud/*":
+    license: BUSL-1.1
+    access: restricted
+    publishable_from_this_repo: false
+
+policy:
+  fixed_version_group:
+    - "@orqenix-pro/*"
+
+  forbid_unpublish: true
+  forbid_force_publish: true
+  forbid_publish_outside_ci: true
+
+  semver_rules:
+    breaking_keywords:
+      - "BREAKING CHANGE"
+      - "!:"
+    feat_bumps: minor
+    fix_bumps: patch
+    chore_bumps: none
+    docs_bumps: none
+
+  first_publish:
+    target_version: "0.5.0"
+    git_tag_format: "v{version}-phase-5-pro"
+    require_changeset: true
+
+  required_gates:
+    phase_5_pro:
+      - G1
+      - G3
+      - G24
+
+  required_files_per_package:
+    - README.md
+    - LICENSE
+    - CHANGELOG.md
+    - dist/
+
+  forbidden_files_in_tarball:
+    - .env
+    - .env.*
+    - "**/*.test.ts"
+    - "**/*.spec.ts"
+    - "**/test/**"
+    - "**/__tests__/**"
+    - ".orqenix-pro/gate-reports/**"
+    - "coverage/**"
+    - "**/*.pem"
+    - "**/*.key"
+    - "**/.DS_Store"
+
+  required_package_json_fields:
+    - name
+    - version
+    - description
+    - license
+    - author
+    - homepage
+    - repository
+    - bugs
+    - keywords
+    - main
+    - module
+    - types
+    - exports
+    - files
+    - publishConfig
+    - engines
+
+approval:
+  release_pr_label: needs-human-approval
+  required_reviewers:
+    - milosaysyolo
+  ci_publish_workflow: .github/workflows/release.yml
+  branch_protection:
+    main:
+      require_pr: true
+      forbid_force_push: true
+      forbid_direct_push: true
+
+agent:
+  release_lead:
+    allowed_branches:
+      - "release-setup/*"
+      - "release/*"
+    denied_actions:
+      - npm_publish_direct
+      - git_push_main
+      - git_tag_push
+      - git_force_push
+      - npm_token_read
+      - release_policy_modify
+    audit_log: .orqenix-pro/release-audit.log
+    audit_hash_algorithm: blake3
+
+contact:
+  owner: Milo Nguyen
+  email: milo@orqenix.dev
+  github: milosaysyolo

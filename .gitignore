@@ -9,12 +9,13 @@ packages/*/dist/
 packages/*/node_modules/
 packages/*/.vite/
 packages/*/coverage/
-.orqenix-pro/
-
-# Orqenix-Pro Release (Batch S1)
-.orqenix-pro/release-audit.log
+# Orqenix-Pro Release — runtime artifacts only
+.orqenix-pro/cache/
 .orqenix-pro/gate-reports/
-.orqenix-pro/release-policy/cache/
+.orqenix-pro/keystore/
+.orqenix-pro/logs/
+.orqenix-pro/release-audit.log
+.orqenix-pro/pre-publish-report.json
 .changeset/.cache/
 *.tgz
 npm-debug.log*

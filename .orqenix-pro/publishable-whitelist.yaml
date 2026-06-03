@@ -1,0 +1,18 @@
+# Publishable Whitelist — Orqenix-Pro
+# Mode "all": publish all discovered packages matching @orqenix-pro/* scope
+# Mode "whitelist": publish ONLY packages in the list below
+
+version: 1
+mode: whitelist
+
+packages:
+  - "@orqenix-pro/kb-code-graph"
+  - "@orqenix-pro/kb-embedding-lance"
+  - "@orqenix-pro/kb-token-store"
+  - "@orqenix-pro/pro-migration"
+  - "@orqenix-pro/memory-distiller-llm"
+  - "@orqenix-pro/mesh-delegation"
+  - "@orqenix-pro/blast-radius"
+  - "@orqenix-pro/workspace-activity"
+  - "@orqenix-pro/audit-log-pro"
+  - "@orqenix-pro/prompt-rewriter-pro"

@@ -1,0 +1,63 @@
+{
+  "mode": "pro",
+  "timestamp": "2026-06-03T03:49:02.432Z",
+  "total": 11,
+  "publishable": 10,
+  "packages": [
+    {
+      "name": "@orqenix-pro/blast-radius",
+      "path": "packages\\blast-radius",
+      "classification": "publishable"
+    },
+    {
+      "name": "@orqenix-pro/integration-tests",
+      "path": "packages\\integration-tests",
+      "classification": "internal"
+    },
+    {
+      "name": "@orqenix-pro/kb-code-graph",
+      "path": "packages\\kb-code-graph",
+      "classification": "publishable"
+    },
+    {
+      "name": "@orqenix-pro/kb-embedding-lance",
+      "path": "packages\\kb-embedding-lance",
+      "classification": "publishable"
+    },
+    {
+      "name": "@orqenix-pro/kb-token-store",
+      "path": "packages\\kb-token-store",
+      "classification": "publishable"
+    },
+    {
+      "name": "@orqenix-pro/knowledge-intel",
+      "path": "packages\\knowledge-intel",
+      "classification": "publishable"
+    },
+    {
+      "name": "@orqenix-pro/learning-loop",
+      "path": "packages\\learning-loop",
+      "classification": "publishable"
+    },
+    {
+      "name": "@orqenix-pro/license",
+      "path": "packages\\license",
+      "classification": "publishable"
+    },
+    {
+      "name": "@orqenix-pro/memory-distiller-llm",
+      "path": "packages\\memory-distiller-llm",
+      "classification": "publishable"
+    },
+    {
+      "name": "@orqenix-pro/mesh-delegation",
+      "path": "packages\\mesh-delegation",
+      "classification": "publishable"
+    },
+    {
+      "name": "@orqenix-pro/pro-migration",
+      "path": "packages\\pro-migration",
+      "classification": "publishable"
+    }
+  ]
+}

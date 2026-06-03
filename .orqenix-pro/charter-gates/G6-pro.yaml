@@ -1,0 +1,19 @@
+schemaVersion: 1
+id: G6-pro
+title: LLM Distiller Behavior
+bsRef: Orqenix-Pro/docs/sdd/BS-pro-002-llm-distiller.md
+dependsOn: [G1, G5, G7, G8, G23]
+tier: pro
+criteria:
+  - { id: G6-pro.1,  description: "memory-distiller-llm unit tests pass",                          severity: blocking }
+  - { id: G6-pro.2,  description: "13 Pro memory types registered (8 OSS + 5 Pro-only)",           severity: blocking }
+  - { id: G6-pro.3,  description: "parseLlmResponse handles plain/prose/reasoning-then-json",      severity: blocking }
+  - { id: G6-pro.4,  description: "parseVerificationVerdict + InvalidLlmResponseError on bad JSON",severity: blocking }
+  - { id: G6-pro.5,  description: "type mapping for all 13 Pro types is total",                    severity: blocking }
+  - { id: G6-pro.6,  description: "distillBatch end-to-end with 2-pass verification (2 LLM calls)",severity: blocking }
+  - { id: G6-pro.7,  description: "verifier rejection prevents memory creation",                   severity: blocking }
+  - { id: G6-pro.8,  description: "Pro-only type preserved in metadata.proType after storage",     severity: blocking }
+  - { id: G6-pro.9,  description: "token usage tracked across extraction + verification",          severity: blocking }
+  - { id: G6-pro.10, description: "watermark advances; second batch is no-op",                     severity: blocking }
+  - { id: G6-pro.11, description: "minConfidence filter respected",                                severity: blocking }
+artifacts: { reportDir: .orqenix-pro/gate-reports/, reportPattern: "G6-pro-*.json" }

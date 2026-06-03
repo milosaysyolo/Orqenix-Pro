@@ -56,6 +56,11 @@
     "pnpm": ">=9"
   },
     "pnpm": {
+    "onlyBuiltDependencies": [
+      "better-sqlite3",
+      "esbuild",
+      "@swc/core"
+    ],
     "overrides": {
       "@orqenix/core": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\core",
       "@orqenix/capability-tokens": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\capability-tokens",

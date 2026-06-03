@@ -1,6 +1,27 @@
 {
   "name": "@orqenix-pro/learning-loop",
   "version": "0.4.0-phase-4",
+  "description": "Orqenix learning-loop package",
+  "license": "BUSL-1.1",
+  "author": {
+    "name": "Milo Nguyen",
+    "email": "milo@orqenix.dev",
+    "url": "https://orqenix.dev"
+  },
+  "homepage": "https://orqenix.dev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/milosaysyolo/Orqenix-Pro.git",
+    "directory": "packages\\learning-loop"
+  },
+  "bugs": {
+    "url": "https://github.com/milosaysyolo/Orqenix-Pro/issues"
+  },
+  "keywords": [
+    "orqenix",
+    "ai-agents",
+    "orchestration"
+  ],
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -8,15 +29,32 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    }
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./package.json": "./package.json"
   },
-  "files": ["dist"],
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/",
+    "provenance": true
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "scripts": {
     "build": "tsup src/index.ts --format esm --dts --clean",
-    "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "clean": "rimraf dist"
+    "typecheck": "tsc --noEmit",
+    "clean": "rimraf dist",
+    "prepublishOnly": "pnpm clean && pnpm build && pnpm test"
   },
   "devDependencies": {
     "@types/node": "^22.10.0",
