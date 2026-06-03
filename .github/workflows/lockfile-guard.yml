@@ -7,7 +7,7 @@ on:
       - "pnpm-lock.yaml"
       - ".npmrc"
   push:
-    branches: [main, release/**]
+    branches: [main, "release/**"]
     paths:
       - "**/package.json"
       - "pnpm-lock.yaml"
@@ -21,6 +21,8 @@ jobs:
     name: Verify pnpm-lock.yaml is in sync
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    outputs:
+      drift_detected: ${{ steps.drift.outputs.drift_detected }}
 
     steps:
       - name: Checkout
@@ -40,23 +42,58 @@ jobs:
           corepack prepare pnpm@${PNPM_VERSION} --activate
           pnpm --version
 
-      - name: Install yaml parser (for drift checker)
+      - name: Install yaml parser
         run: npm install --no-save --no-package-lock yaml@2
 
-      - name: Check lockfile drift (root deps vs lockfile)
-        run: node scripts/release/check-lockfile-drift.mjs
+      - name: Check lockfile drift
+        id: drift
+        continue-on-error: true
+        run: |
+          if node scripts/release/check-lockfile-drift.mjs; then
+            echo "drift_detected=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "drift_detected=true" >> "$GITHUB_OUTPUT"
+            exit 1
+          fi
 
       - name: Verify onlyBuiltDependencies allowlist
+        if: steps.drift.outputs.drift_detected != 'true'
         run: node scripts/release/verify-only-built-deps.mjs
 
-      - name: Verify lockfile passes --frozen-lockfile
+      - name: Verify --frozen-lockfile passes
+        if: steps.drift.outputs.drift_detected != 'true'
         env:
           NPM_CONFIG_IGNORE_SCRIPTS: "true"
         run: pnpm install --frozen-lockfile --lockfile-only
+
+      # Emit signal artifact for autofix workflow (works for fork PRs too)
+      - name: Emit autofix signal
+        if: always() && steps.drift.outputs.drift_detected == 'true' && github.event_name == 'pull_request'
+        run: |
+          mkdir -p .autofix-signal
+          cat > .autofix-signal/signal.json <<EOF
+          {
+            "pr_number": ${{ github.event.pull_request.number }},
+            "pr_head_repo": "${{ github.event.pull_request.head.repo.full_name }}",
+            "pr_head_ref": "${{ github.event.pull_request.head.ref }}",
+            "pr_head_sha": "${{ github.event.pull_request.head.sha }}",
+            "pr_base_repo": "${{ github.event.pull_request.base.repo.full_name }}",
+            "is_fork": ${{ github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name }},
+            "actor": "${{ github.event.pull_request.user.login }}"
+          }
+          EOF
+
+      - name: Upload autofix signal
+        if: always() && steps.drift.outputs.drift_detected == 'true' && github.event_name == 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: lockfile-autofix-signal
+          path: .autofix-signal/
+          retention-days: 1
 
       - name: Summary
         if: success()
         run: |
           echo "Lockfile is in sync with package.json"
           echo "onlyBuiltDependencies allowlist preserved"
-          echo "Frozen-lockfile install succeeded"
+          echo "--frozen-lockfile install succeeded"

@@ -1,0 +1,265 @@
+name: Lockfile Autofix Bot
+
+on:
+  workflow_run:
+    workflows: ["Lockfile Guard"]
+    types: [completed]
+
+permissions:
+  contents: read
+
+jobs:
+  autofix:
+    name: Auto-sync pnpm-lock.yaml
+    if: github.event.workflow_run.conclusion == 'failure' && github.event.workflow_run.event == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    # Write perms scoped to this job only
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: read
+
+    steps:
+      - name: Download signal artifact
+        id: download
+        uses: actions/download-artifact@v4
+        with:
+          name: lockfile-autofix-signal
+          path: .autofix-signal
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true
+
+      - name: Validate signal exists
+        id: validate
+        run: |
+          if [ ! -f .autofix-signal/signal.json ]; then
+            echo "No signal artifact; nothing to autofix. Exiting cleanly."
+            echo "should_run=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "should_run=true" >> "$GITHUB_OUTPUT"
+          cat .autofix-signal/signal.json
+
+      - name: Parse signal
+        id: signal
+        if: steps.validate.outputs.should_run == 'true'
+        run: |
+          SIGNAL=$(cat .autofix-signal/signal.json)
+          echo "pr_number=$(echo "$SIGNAL" | jq -r '.pr_number')" >> "$GITHUB_OUTPUT"
+          echo "pr_head_repo=$(echo "$SIGNAL" | jq -r '.pr_head_repo')" >> "$GITHUB_OUTPUT"
+          echo "pr_head_ref=$(echo "$SIGNAL" | jq -r '.pr_head_ref')" >> "$GITHUB_OUTPUT"
+          echo "pr_head_sha=$(echo "$SIGNAL" | jq -r '.pr_head_sha')" >> "$GITHUB_OUTPUT"
+          echo "pr_base_repo=$(echo "$SIGNAL" | jq -r '.pr_base_repo')" >> "$GITHUB_OUTPUT"
+          echo "is_fork=$(echo "$SIGNAL" | jq -r '.is_fork')" >> "$GITHUB_OUTPUT"
+          echo "actor=$(echo "$SIGNAL" | jq -r '.actor')" >> "$GITHUB_OUTPUT"
+
+      # ---- Security gate: skip bot fix for fork PRs (default policy) ----
+      - name: Check fork policy
+        id: fork_policy
+        if: steps.validate.outputs.should_run == 'true'
+        env:
+          ALLOW_FORK_AUTOFIX: ${{ vars.ALLOW_FORK_AUTOFIX || 'false' }}
+        run: |
+          if [ "${{ steps.signal.outputs.is_fork }}" = "true" ] && [ "$ALLOW_FORK_AUTOFIX" != "true" ]; then
+            echo "PR is from a fork and ALLOW_FORK_AUTOFIX is not enabled."
+            echo "Will post a comment instructing the contributor to fix locally."
+            echo "skip_push=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip_push=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      # ---- Fork PR: just comment guidance, do NOT push ----
+      - name: Comment fork guidance
+        if: steps.validate.outputs.should_run == 'true' && steps.fork_policy.outputs.skip_push == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ steps.signal.outputs.pr_number }}
+        run: |
+          gh pr comment "$PR_NUMBER" \
+            --repo "${{ github.repository }}" \
+            --body "$(cat <<'EOF'
+          ### Lockfile out of sync
+
+          The `Lockfile Guard` workflow detected that `pnpm-lock.yaml` is not in sync with `package.json`.
+
+          Because this PR is from a fork, the autofix bot will not push to your branch automatically. Please run locally:
+
+          \`\`\`bash
+          corepack enable
+          PNPM_VERSION=\$(node -p "require('./package.json').packageManager.split('@')[1]")
+          corepack prepare pnpm@\${PNPM_VERSION} --activate
+
+          pnpm install --lockfile-only
+          pnpm install --frozen-lockfile --lockfile-only   # verify
+
+          git add pnpm-lock.yaml
+          git commit -m "chore: sync pnpm-lock.yaml"
+          git push
+          \`\`\`
+
+          Or use the helper script: \`pnpm run lockfile:sync\`.
+
+          A maintainer can enable autofix for forks by setting repository variable \`ALLOW_FORK_AUTOFIX=true\` (not recommended without code-owner review of the PR diff).
+          EOF
+          )"
+
+      # ---- Same-repo PR: proceed with autofix ----
+      - name: Checkout PR head
+        if: steps.validate.outputs.should_run == 'true' && steps.fork_policy.outputs.skip_push == 'false'
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ steps.signal.outputs.pr_head_repo }}
+          ref: ${{ steps.signal.outputs.pr_head_ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Verify head SHA matches signal (anti-race)
+        if: steps.validate.outputs.should_run == 'true' && steps.fork_policy.outputs.skip_push == 'false'
+        run: |
+          CURRENT_SHA=$(git rev-parse HEAD)
+          EXPECTED_SHA="${{ steps.signal.outputs.pr_head_sha }}"
+          if [ "$CURRENT_SHA" != "$EXPECTED_SHA" ]; then
+            echo "PR head moved (expected $EXPECTED_SHA, got $CURRENT_SHA). Skipping autofix to avoid race."
+            echo "RACE_DETECTED=true" >> "$GITHUB_ENV"
+          fi
+
+      - name: Exit if race detected
+        if: env.RACE_DETECTED == 'true'
+        run: |
+          echo "Aborting cleanly; next push will retrigger guard + autofix."
+          exit 0
+
+      - name: Setup Node
+        if: steps.validate.outputs.should_run == 'true' && steps.fork_policy.outputs.skip_push == 'false'
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Setup pnpm via Corepack
+        if: steps.validate.outputs.should_run == 'true' && steps.fork_policy.outputs.skip_push == 'false'
+        run: |
+          corepack enable
+          PNPM_VERSION=$(node -p "require('./package.json').packageManager.split('@')[1]")
+          corepack prepare pnpm@${PNPM_VERSION} --activate
+          pnpm --version
+
+      - name: Run sync-lockfile script
+        id: sync
+        if: steps.validate.outputs.should_run == 'true' && steps.fork_policy.outputs.skip_push == 'false'
+        env:
+          NPM_CONFIG_IGNORE_SCRIPTS: "true"
+        run: |
+          set -o pipefail
+          bash scripts/release/sync-lockfile.sh 2>&1 | tee sync-output.log
+          echo "exit_code=$?" >> "$GITHUB_OUTPUT"
+
+      - name: Verify diff scope (only lockfile changed)
+        if: steps.validate.outputs.should_run == 'true' && steps.fork_policy.outputs.skip_push == 'false'
+        run: |
+          CHANGED=$(git status --porcelain | awk '{print $2}')
+          echo "Changed files:"
+          echo "$CHANGED"
+          UNAUTHORIZED=$(echo "$CHANGED" | grep -v -E '^(pnpm-lock\.yaml)$' || true)
+          if [ -n "$UNAUTHORIZED" ]; then
+            echo "ERROR: Unexpected files modified by autofix:"
+            echo "$UNAUTHORIZED"
+            exit 1
+          fi
+          if [ -z "$CHANGED" ]; then
+            echo "No changes after sync; lockfile already in sync. Nothing to commit."
+            echo "NOTHING_TO_COMMIT=true" >> "$GITHUB_ENV"
+          fi
+
+      - name: Configure git identity
+        if: steps.validate.outputs.should_run == 'true' && steps.fork_policy.outputs.skip_push == 'false' && env.NOTHING_TO_COMMIT != 'true'
+        run: |
+          git config user.name "orqenix-autofix[bot]"
+          git config user.email "orqenix-autofix[bot]@users.noreply.github.com"
+
+      - name: Commit and push fix
+        if: steps.validate.outputs.should_run == 'true' && steps.fork_policy.outputs.skip_push == 'false' && env.NOTHING_TO_COMMIT != 'true'
+        run: |
+          git add pnpm-lock.yaml
+          git commit -m "chore: sync pnpm-lock.yaml (autofix)
+
+          Automated lockfile sync by orqenix-autofix[bot].
+          Triggered by Lockfile Guard failure on PR #${{ steps.signal.outputs.pr_number }}.
+
+          Changes scope: pnpm-lock.yaml only.
+          onlyBuiltDependencies allowlist: preserved.
+          --frozen-lockfile: passes after sync.
+
+          Co-authored-by: ${{ steps.signal.outputs.actor }} <${{ steps.signal.outputs.actor }}@users.noreply.github.com>"
+          git push origin HEAD:${{ steps.signal.outputs.pr_head_ref }}
+
+      - name: Comment success
+        if: steps.validate.outputs.should_run == 'true' && steps.fork_policy.outputs.skip_push == 'false' && env.NOTHING_TO_COMMIT != 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ steps.signal.outputs.pr_number }}
+        run: |
+          gh pr comment "$PR_NUMBER" \
+            --repo "${{ github.repository }}" \
+            --body "$(cat <<'EOF'
+          ### Lockfile autofixed
+
+          The `orqenix-autofix` bot detected that `pnpm-lock.yaml` was out of sync with `package.json` and has pushed a fix commit to this PR.
+
+          **What was done:**
+          - Ran `pnpm install --lockfile-only` with pinned `packageManager` version
+          - Verified `pnpm install --frozen-lockfile` now passes
+          - Verified `pnpm.onlyBuiltDependencies` allowlist preserved
+          - Verified only `pnpm-lock.yaml` was modified
+
+          **Please pull the latest commit** before pushing further changes:
+          \`\`\`bash
+          git pull --rebase origin ${{ steps.signal.outputs.pr_head_ref }}
+          \`\`\`
+
+          If you believe this autofix is incorrect, revert the bot commit and a maintainer will review.
+          EOF
+          )"
+
+      - name: Comment failure
+        if: failure() && steps.validate.outputs.should_run == 'true' && steps.fork_policy.outputs.skip_push == 'false'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ steps.signal.outputs.pr_number }}
+        run: |
+          gh pr comment "$PR_NUMBER" \
+            --repo "${{ github.repository }}" \
+            --body "$(cat <<'EOF'
+          ### Lockfile autofix failed
+
+          The `orqenix-autofix` bot tried to sync `pnpm-lock.yaml` but failed. A maintainer will need to investigate.
+
+          Possible causes:
+          - PR head moved during autofix (race condition); push any commit to retrigger
+          - Unauthorized file modifications detected (autofix only touches `pnpm-lock.yaml`)
+          - `packageManager` version mismatch
+          - `pnpm.onlyBuiltDependencies` allowlist drift
+
+          Workflow run: ${{ github.event.workflow_run.html_url }}
+
+          To fix locally:
+          \`\`\`bash
+          pnpm run lockfile:sync
+          git add pnpm-lock.yaml
+          git commit -m "chore: sync pnpm-lock.yaml"
+          git push
+          \`\`\`
+          EOF
+          )"
+
+      - name: Add autofix label
+        if: steps.validate.outputs.should_run == 'true' && steps.fork_policy.outputs.skip_push == 'false' && env.NOTHING_TO_COMMIT != 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ steps.signal.outputs.pr_number }}
+        run: |
+          gh pr edit "$PR_NUMBER" \
+            --repo "${{ github.repository }}" \
+            --add-label "autofix:lockfile" || true

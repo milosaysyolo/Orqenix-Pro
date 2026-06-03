@@ -8,6 +8,7 @@
   "scripts": {
     "lockfile:check": "node scripts/release/check-lockfile-drift.mjs",
     "lockfile:fix": "pnpm install --lockfile-only && node scripts/release/check-lockfile-drift.mjs",
+    "lockfile:sync": "bash scripts/release/sync-lockfile.sh",
     "lockfile:verify-allowlist": "node scripts/release/verify-only-built-deps.mjs",
     "lockfile:verify-diff": "node scripts/release/verify-lockfile-diff-scope.mjs",
     "build": "pnpm -r build",
