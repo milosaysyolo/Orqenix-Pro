@@ -1,0 +1,41 @@
+name: Release Scheduled
+
+on:
+  schedule:
+    - cron: "0 2 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  propose-weekly-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.ORQENIX_COORDINATOR_PAT }}
+
+      - uses: pnpm/action-setup@v4
+        with: { version: 9 }
+
+      - uses: actions/setup-node@v4
+        with: { node-version: 20, cache: pnpm }
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Configure git
+        run: |
+          git config user.name "orqenix-release-bot"
+          git config user.email "bot@orqenix.dev"
+
+      - name: Run release-lead (auto bump)
+        env:
+          GH_TOKEN: ${{ secrets.ORQENIX_COORDINATOR_PAT }}
+        run: |
+          pnpm tsx scripts/agents/release-propose.ts \
+            --bump=auto \
+            --reason="Weekly scheduled cadence (Monday 09:00 ICT)" \
+            || echo "Nothing to release this week"

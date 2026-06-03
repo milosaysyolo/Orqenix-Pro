@@ -6,6 +6,10 @@
   "license": "BUSL-1.1",
   "type": "module",
   "scripts": {
+    "lockfile:check": "node scripts/release/check-lockfile-drift.mjs",
+    "lockfile:fix": "pnpm install --lockfile-only && node scripts/release/check-lockfile-drift.mjs",
+    "lockfile:verify-allowlist": "node scripts/release/verify-only-built-deps.mjs",
+    "lockfile:verify-diff": "node scripts/release/verify-lockfile-diff-scope.mjs",
     "build": "pnpm -r build",
     "test": "pnpm -r test",
     "lint": "pnpm -r lint",
@@ -35,6 +39,7 @@
     "@orqenix-pro/memory-distiller-llm": "workspace:*",
     "@orqenix-pro/mesh-delegation": "workspace:*",
     "@orqenix-pro/blast-radius": "workspace:*",
+    "yaml": "^2.5.0",
     "@orqenix/storage-sqlite": "*",
     "@orqenix/storage-diff": "*",
     "@orqenix/kb-chat": "*",
@@ -51,6 +56,7 @@
     "@orqenix/prompt-rewriter": "*",
     "@orqenix/memory-distiller": "*"
   },
+  "packageManager": "pnpm@9.12.0",
   "engines": {
     "node": ">=20",
     "pnpm": ">=9"

@@ -1,0 +1,109 @@
+name: Release Slash Command
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  parse-and-dispatch:
+    if: |
+      github.event.issue.pull_request == null &&
+      contains(github.event.comment.body, '/orqenix release') &&
+      github.event.comment.author_association == 'OWNER'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.ORQENIX_COORDINATOR_PAT }}
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Parse slash command
+        id: parse
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const body = context.payload.comment.body.trim();
+            const match = body.match(/^\/orqenix release\s+(\w+)(?:\s+(.+))?$/);
+            if (!match) {
+              core.setFailed('Invalid command format. Use: /orqenix release [major|minor|patch|auto] [reason]');
+              return;
+            }
+            const bump = match[1];
+            const reason = match[2] || `Slash command by @${context.actor}`;
+            if (!['major', 'minor', 'patch', 'auto'].includes(bump)) {
+              core.setFailed(`Invalid bump type: ${bump}`);
+              return;
+            }
+            core.setOutput('bump', bump);
+            core.setOutput('reason', reason);
+
+      - name: Acknowledge command
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.reactions.createForIssueComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              comment_id: context.payload.comment.id,
+              content: 'eyes',
+            });
+
+      - name: Configure git
+        run: |
+          git config user.name "orqenix-release-bot"
+          git config user.email "bot@orqenix.dev"
+
+      - name: Run release-lead agent
+        id: agent
+        env:
+          GH_TOKEN: ${{ secrets.ORQENIX_COORDINATOR_PAT }}
+        run: |
+          pnpm tsx scripts/agents/release-propose.ts \
+            --bump=${{ steps.parse.outputs.bump }} \
+            --reason=${{ toJSON(steps.parse.outputs.reason) }} 2>&1 | tee agent-output.log
+
+      - name: React success
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.reactions.createForIssueComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              comment_id: context.payload.comment.id,
+              content: 'rocket',
+            });
+
+      - name: React failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.reactions.createForIssueComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              comment_id: context.payload.comment.id,
+              content: 'confused',
+            });
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `Release agent failed. See: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+            });
