@@ -98,7 +98,13 @@ function writeReleaseDocs(kind: 'main' | 'pro'): string[] {
 
 function stageAndCommit(files: string[], message: string): string {
   run(`git add ${files.map((f) => `"${f}"`).join(' ')} pnpm-lock.yaml`);
-  run(`git commit -m "${message}"`);
+  // skip commit if nothing to commit (content unchanged from prior run)
+  const hasChanges = tryRun('git diff --cached --quiet') === null;
+  if (hasChanges) {
+    run(`git commit -m "${message}"`);
+  } else {
+    console.log('  (no new changes to commit)');
+  }
   return run('git rev-parse HEAD', { silent: true });
 }
 
