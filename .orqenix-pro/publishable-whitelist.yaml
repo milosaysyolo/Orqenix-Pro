@@ -13,6 +13,3 @@ packages:
   - "@orqenix-pro/memory-distiller-llm"
   - "@orqenix-pro/mesh-delegation"
   - "@orqenix-pro/blast-radius"
-  - "@orqenix-pro/workspace-activity"
-  - "@orqenix-pro/audit-log-pro"
-  - "@orqenix-pro/prompt-rewriter-pro"

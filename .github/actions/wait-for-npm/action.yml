@@ -1,0 +1,54 @@
+name: "Wait for npm version"
+description: "Polls npm registry until a specific package version is available"
+
+inputs:
+  package:
+    description: "Package name including scope (e.g., @orqenix/core)"
+    required: true
+  version:
+    description: "Exact version to wait for"
+    required: true
+  timeout-seconds:
+    description: "Total timeout in seconds"
+    required: false
+    default: "300"
+  interval-seconds:
+    description: "Polling interval"
+    required: false
+    default: "10"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Poll npm registry
+      shell: bash
+      run: |
+        set -euo pipefail
+        PKG="${{ inputs.package }}"
+        VER="${{ inputs.version }}"
+        TIMEOUT=${{ inputs.timeout-seconds }}
+        INTERVAL=${{ inputs.interval-seconds }}
+        ELAPSED=0
+
+        echo "Waiting for ${PKG}@${VER} on npm registry (timeout: ${TIMEOUT}s)"
+
+        while [ $ELAPSED -lt $TIMEOUT ]; do
+          PKG_ENCODED=$(node -e "console.log(encodeURIComponent('${PKG}'))")
+          HTTP_CODE=$(curl -s -o /tmp/npm-resp.json -w "%{http_code}" \
+            "https://registry.npmjs.org/${PKG_ENCODED}/${VER}" || echo "000")
+
+          if [ "${HTTP_CODE}" = "200" ]; then
+            ACTUAL=$(jq -r '.version // ""' /tmp/npm-resp.json 2>/dev/null || echo "")
+            if [ "${ACTUAL}" = "${VER}" ]; then
+              echo "::notice::Found ${PKG}@${VER} after ${ELAPSED}s"
+              exit 0
+            fi
+          fi
+
+          echo "  Not yet available (HTTP ${HTTP_CODE}). Waited ${ELAPSED}s..."
+          sleep $INTERVAL
+          ELAPSED=$((ELAPSED + INTERVAL))
+        done
+
+        echo "::error::Timeout (${TIMEOUT}s) waiting for ${PKG}@${VER} on npm"
+        exit 1
