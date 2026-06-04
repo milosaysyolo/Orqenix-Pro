@@ -1,7 +1,7 @@
 <!-- HEADER:START -->
 <p align="center">
   <a href="https://orqenix.dev">
-    <img src="./assets/logo-banner-pro.svg" alt="Orqenix-Pro" width="440" />
+    <img src="./assets/logo-banner-pro.svg" alt="Orqenix-Pro" />
   </a>
 </p>
 
