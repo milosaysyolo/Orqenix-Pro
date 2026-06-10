@@ -1,0 +1,42 @@
+{
+  "name": "@orqenix-pro/cli",
+  "version": "0.6.0-phase-6",
+  "description": "Orqenix Pro command-line interface foundation. Pro license token auth, output formatters, command framework. Subcommands ship in Parts 11B and 12.",
+  "type": "module",
+  "license": "BUSL-1.1",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "orqenix": "./bin/orqenix.mjs"
+  },
+  "exports": { ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" } },
+  "files": ["dist", "bin", "README.md", "LICENSE", "CHANGELOG.md"],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run --coverage",
+    "gate:G44-pro": "tsx ../../scripts/gates/G44-pro-cli-foundation.ts",
+    "gate:G45-pro": "tsx ../../scripts/gates/G45-pro-cli-mesh-delegation.ts",
+    "gate:G46-pro": "tsx ../../scripts/gates/G46-pro-cli-quota.ts",
+    "gate:G47-pro": "tsx ../../scripts/gates/G47-pro-cli-backend.ts",
+    "verify": "tsx ../../scripts/gates/verify-phase-6-pro.ts"
+  },
+  "dependencies": {
+    "@orqenix/mesh-transport-core": "^0.6.0-phase-6",
+    "@orqenix/mesh-observability": "^0.6.0-phase-6",
+    "@orqenix/mesh-routing": "*",
+    "@orqenix/audit-log": "*",
+    "@orqenix-pro/license": "workspace:*",
+    "@orqenix-pro/mesh-delegation": "workspace:*",
+    "@orqenix-pro/blast-radius": "workspace:*",
+    "@orqenix-pro/polyglot-backend": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.0",
+    "@vitest/coverage-v8": "^2.1.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0",
+    "vitest": "^2.1.0"
+  },
+  "publishConfig": { "access": "public", "provenance": true },
+  "engines": { "node": ">=22.0.0" }
+}

@@ -35,4 +35,28 @@ declare function hasFeature(lic: License, feature: string): boolean;
 
 declare function loadLicense(path: string): Promise<unknown>;
 
-export { GRACE_PERIOD_MS, type InvalidReason, type License, type LicenseCheckInvalid, type LicenseCheckResult, type LicenseCheckValid, type LicensePayload, type Plan, canonicalize, hasFeature, loadLicense, signLicense, verifyLicense };
+interface ProLicenseVerifierResult {
+    ok: true;
+    license: {
+        subject: string;
+        tier: 'pro';
+        expiresAtMs: number;
+        jti: string;
+    };
+}
+interface ProLicenseVerifierError {
+    ok: false;
+    code: string;
+    message: string;
+}
+declare class ProLicenseVerifier {
+    private readonly publicKeyPath;
+    constructor(opts?: {
+        publicKeyPath?: string;
+    });
+    verify(rawToken: string): Promise<ProLicenseVerifierResult | ProLicenseVerifierError>;
+    private fakeVerify;
+    private toProLicense;
+}
+
+export { GRACE_PERIOD_MS, type InvalidReason, type License, type LicenseCheckInvalid, type LicenseCheckResult, type LicenseCheckValid, type LicensePayload, type Plan, ProLicenseVerifier, canonicalize, hasFeature, loadLicense, signLicense, verifyLicense };

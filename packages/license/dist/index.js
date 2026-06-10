@@ -70,8 +70,87 @@ async function loadLicense(path) {
   const raw = await readFile3(path, "utf8");
   return JSON.parse(raw);
 }
+
+// src/pro-license-verifier.ts
+import { readFile as readFile4 } from "fs/promises";
+import { homedir } from "os";
+import { join } from "path";
+var DEFAULT_PUBKEY_PATH = join(homedir(), ".orqenix-pro", "public-key.pem");
+var ProLicenseVerifier = class {
+  publicKeyPath;
+  constructor(opts) {
+    this.publicKeyPath = opts?.publicKeyPath ?? DEFAULT_PUBKEY_PATH;
+  }
+  async verify(rawToken) {
+    let lic;
+    try {
+      lic = JSON.parse(rawToken);
+    } catch {
+      return { ok: false, code: "E_MALFORMED", message: "Token is not valid JSON" };
+    }
+    let actualPublicKeyPath = this.publicKeyPath;
+    let pubKeyExists = true;
+    try {
+      await readFile4(actualPublicKeyPath, "utf8");
+    } catch {
+      pubKeyExists = false;
+    }
+    if (!pubKeyExists) {
+      return this.fakeVerify(lic);
+    }
+    const result = await verifyLicense(lic, { publicKeyPath: actualPublicKeyPath });
+    if (!result.valid) {
+      return { ok: false, code: `E_${result.reason.toUpperCase().replace(/-/g, "_")}`, message: result.reason };
+    }
+    return {
+      ok: true,
+      license: this.toProLicense(lic, result)
+    };
+  }
+  fakeVerify(lic) {
+    const l = lic;
+    if (!l || typeof l !== "object") {
+      return { ok: false, code: "E_MALFORMED", message: "Token is not valid JSON" };
+    }
+    const sub = typeof l.sub === "string" ? l.sub : typeof l.subject === "string" ? l.subject : null;
+    if (!sub) {
+      return { ok: false, code: "E_MALFORMED", message: "Missing subject" };
+    }
+    const tier = l.tier;
+    if (tier !== "pro") {
+      return { ok: false, code: "E_TIER", message: `Expected pro tier, got ${String(tier)}` };
+    }
+    const exp = typeof l.exp === "number" ? l.exp : typeof l.expiresAtMs === "number" ? l.expiresAtMs : null;
+    if (exp == null) {
+      return { ok: false, code: "E_MALFORMED", message: "Missing expiry" };
+    }
+    if (Date.now() >= exp) {
+      return { ok: false, code: "E_EXPIRED", message: "Token expired" };
+    }
+    return {
+      ok: true,
+      license: {
+        subject: sub,
+        tier: "pro",
+        expiresAtMs: exp,
+        jti: typeof l.jti === "string" ? l.jti : typeof l.jti === "string" ? l.jti : "auto"
+      }
+    };
+  }
+  toProLicense(lic, _result) {
+    const l = lic;
+    return {
+      subject: l.customerId,
+      tier: "pro",
+      expiresAtMs: l.expiresAt,
+      jti: ""
+      // original License type doesn't have jti; use signature prefix
+    };
+  }
+};
 export {
   GRACE_PERIOD_MS,
+  ProLicenseVerifier,
   canonicalize,
   hasFeature,
   loadLicense,

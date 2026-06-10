@@ -1,6 +1,7 @@
 export { signLicense, canonicalize } from "./sign.js";
 export { verifyLicense, hasFeature, GRACE_PERIOD_MS } from "./verify.js";
 export { loadLicense } from "./load.js";
+export { ProLicenseVerifier } from "./pro-license-verifier.js";
 export type {
   License,
   LicensePayload,
