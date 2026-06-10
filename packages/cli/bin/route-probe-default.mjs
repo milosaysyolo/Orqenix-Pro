@@ -1,16 +1,23 @@
 // packages/cli/bin/route-probe-default.mjs
-import { MeshRouter } from '@orqenix/mesh-routing';
-
 export class RouterRouteProbe {
   constructor() {
-    this._router = new MeshRouter();
+    this._router = null;
+  }
+
+  async _getRouter() {
+    if (!this._router) {
+      const { MeshRouter } = await import('@orqenix/mesh-routing');
+      this._router = new MeshRouter();
+    }
+    return this._router;
   }
 
   async probe(target, opts) {
     const { deadlineMs, maxHops, signal } = opts;
+    const router = await this._getRouter();
     const start = Date.now();
     try {
-      const result = await this._router.query({
+      const result = await router.query({
         text: 'system.ping',
         k: 1,
         timeoutMs: deadlineMs,

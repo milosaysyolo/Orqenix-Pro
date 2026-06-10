@@ -1,25 +1,33 @@
-// bin/delegation-store-default.mjs
-// In-memory DelegationStore implementation matching the structural interface from subcommands.
-// Swappable with a production adapter linked to @orqenix-pro/mesh-delegation in a deployment wrapper.
-
+// packages/cli/bin/delegation-store-default.mjs
 export class DefaultDelegationStore {
-  constructor() {
-    this._delegations = new Map();
+  constructor(seed = []) {
+    this.items = new Map(seed.map((d) => [d.jti, { ...d }]));
   }
-  async listForScope(_scopeId, _opts) {
-    return [...this._delegations.values()];
+
+  async listForScope(scope) {
+    return [...this.items.values()].filter((d) => d.subject === scope || d.issuer === scope);
   }
+
   async get(jti) {
-    return this._delegations.get(jti);
+    return this.items.get(jti);
   }
-  async chain(_jti, _maxDepth) {
-    return [];
+
+  async chain(jti) {
+    const out = [];
+    let cur = this.items.get(jti);
+    while (cur) {
+      out.push(cur);
+      if (!cur.parentJti) break;
+      cur = this.items.get(cur.parentJti);
+    }
+    return out;
   }
+
   async revoke(jti, reason) {
-    const d = this._delegations.get(jti);
-    if (!d) throw Object.assign(new Error('delegation not found'), { code: 4 });
-    const upd = { ...d, revoked: true, revokedReason: reason };
-    this._delegations.set(jti, upd);
-    return upd;
+    const cur = this.items.get(jti);
+    if (!cur) return undefined;
+    const next = { ...cur, revoked: true, revokedReason: reason };
+    this.items.set(jti, next);
+    return next;
   }
 }

@@ -1,27 +1,41 @@
-// bin/audit-log-default.mjs
-// In-memory AuditLog implementation matching the structural interface from subcommands.
-// Swappable with a production adapter linked to @orqenix/audit-log in a deployment wrapper.
+// packages/cli/bin/audit-log-default.mjs
+import { createHash } from 'node:crypto';
+
+function stableJson(value) {
+  return JSON.stringify(value, Object.keys(value).sort());
+}
+
+function hashEntry(input, prevHash, index, ts) {
+  return createHash('sha256')
+    .update(stableJson({ index, ts, prevHash, ...input }))
+    .digest('hex');
+}
 
 export class DefaultAuditLog {
   constructor() {
-    this._entries = [];
+    this.entries = [];
   }
+
   async append(input) {
-    const prevHash = this._entries.length > 0 ? this._entries[this._entries.length - 1].hash : '0'.repeat(64);
+    const index = this.entries.length;
+    const ts = Date.now();
+    const prevHash = this.entries.at(-1)?.hash ?? '0'.repeat(64);
+    const hash = hashEntry(input, prevHash, index, ts);
     const entry = {
-      index: this._entries.length,
-      ts: Date.now(),
+      index,
+      ts,
       type: input.type,
       actor: input.actor,
       subject: input.subject,
-      details: input.details,
-      hash: Array.from({ length: 64 }, () => Math.floor(Math.random() * 16).toString(16)).join(''),
+      details: input.details ?? {},
       prevHash,
+      hash,
     };
-    this._entries.push(entry);
+    this.entries.push(entry);
     return entry;
   }
+
   async get(index) {
-    return this._entries[index];
+    return this.entries[index];
   }
 }

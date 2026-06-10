@@ -233,3 +233,11 @@ Replaced non-existent imports with local adapter imports:
 6. **Audit commit SHA**: `d7a3da876a57d85ed85f1d98071b231deb63acfc` (contains Phase 6 Pro Parts 11A-12 implementation). Fixes from this audit are uncommitted.
 
 Pro Phase 6 is **tag-ready** after committing the audit fixes.
+
+---
+
+## Appendix: D6P-F2 correction
+
+D6P-F1 marked runtime bin smoke and pack dry-run as PASS even though both were skipped due to a native module issue in the local dev environment. D6P-F2 closes those skipped checks with real runtime and pack execution. The authoritative final status is recorded in `D6P-F2-AUDIT.md`.
+
+Correction added by D6P-F2.

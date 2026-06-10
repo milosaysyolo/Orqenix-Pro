@@ -23,7 +23,7 @@ import { DefaultBlastRadiusStore } from './blast-radius-default.mjs';
 const verifier = new ProLicenseVerifier();
 const audit = new DefaultAuditLog();
 const delegStore = new DefaultDelegationStore();
-const quotaStore = new DefaultBlastRadiusStore();
+const quotaStore = new DefaultBlastRadiusStore('local');
 const backends = new PolyglotBackendManager();
 const probe = new RouterRouteProbe();
 

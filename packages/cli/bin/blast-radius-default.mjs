@@ -1,48 +1,57 @@
-// bin/blast-radius-default.mjs
-// In-memory BlastRadiusStore adapter matching the QuotaStore structural interface from subcommands.
-// Swappable with the real @orqenix-pro/blast-radius BlastRadiusStore in a deployment wrapper.
-
-import { QUOTA_KINDS } from '../dist/subcommands/quota-store.js';
-
-const DEFAULT_WINDOW_MS = 60_000;
+// packages/cli/bin/blast-radius-default.mjs
+const DEFAULT_WINDOW = 60_000;
 
 export class DefaultBlastRadiusStore {
-  constructor() {
-    this._quotas = new Map();
-    for (const kind of QUOTA_KINDS) {
-      this._quotas.set(kind, this._make(kind));
+  constructor(scope) {
+    this.scope = scope;
+    this.quotas = new Map();
+    for (const kind of [
+      'rpc_calls_per_min',
+      'bytes_egress_per_hour',
+      'delegations_active',
+      'recall_queries_per_min',
+      'distill_tokens_per_day',
+    ]) {
+      this.quotas.set(kind, {
+        kind,
+        scope,
+        current: 0,
+        limit: 100,
+        windowMs: DEFAULT_WINDOW,
+        windowRemainingMs: DEFAULT_WINDOW,
+        breached: false,
+        windowStartedAtMs: Date.now(),
+      });
     }
   }
-  _make(kind) {
-    return {
-      kind,
-      scope: 'local',
+
+  async listQuotas() {
+    return [...this.quotas.values()];
+  }
+
+  async getQuota(_scope, kind) {
+    return this.quotas.get(kind);
+  }
+
+  async setLimit(_scope, kind, limit) {
+    const q = this.quotas.get(kind);
+    if (!q) return undefined;
+    const next = { ...q, limit, breached: q.current >= limit };
+    this.quotas.set(kind, next);
+    return next;
+  }
+
+  async resetWindow(_scope, kind) {
+    const q = this.quotas.get(kind);
+    if (!q) return undefined;
+    const next = {
+      ...q,
       current: 0,
-      limit: 1000,
-      windowMs: DEFAULT_WINDOW_MS,
-      windowRemainingMs: DEFAULT_WINDOW_MS,
       breached: false,
+      windowRemainingMs: q.windowMs,
       windowStartedAtMs: Date.now(),
     };
-  }
-  async listQuotas(_scope) {
-    return [...this._quotas.values()];
-  }
-  async getQuota(_scope, kind) {
-    return this._quotas.get(kind);
-  }
-  async setLimit(_scope, kind, limit) {
-    const e = this._quotas.get(kind);
-    if (!e) throw new Error('unknown quota kind: ' + kind);
-    const upd = { ...e, limit, breached: e.current >= limit };
-    this._quotas.set(kind, upd);
-    return upd;
-  }
-  async resetWindow(_scope, kind) {
-    const e = this._quotas.get(kind);
-    if (!e) throw new Error('unknown quota kind: ' + kind);
-    const upd = { ...e, current: 0, windowRemainingMs: e.windowMs, windowStartedAtMs: Date.now() };
-    this._quotas.set(kind, upd);
-    return upd;
+    this.quotas.set(kind, next);
+    return next;
   }
 }
