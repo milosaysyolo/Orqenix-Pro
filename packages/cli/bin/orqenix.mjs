@@ -14,16 +14,16 @@ import {
   makeBackendSwitchCommand,
 } from '../dist/index.js';
 import { ProLicenseVerifier } from '@orqenix-pro/license';
-import { DelegationStore } from '@orqenix-pro/mesh-delegation';
-import { AppendOnlyAuditLog } from '@orqenix/audit-log';
-import { BlastRadiusStore } from '@orqenix-pro/blast-radius';
 import { PolyglotBackendManager } from '@orqenix-pro/polyglot-backend';
 import { RouterRouteProbe } from './route-probe-default.mjs';
+import { DefaultAuditLog } from './audit-log-default.mjs';
+import { DefaultDelegationStore } from './delegation-store-default.mjs';
+import { DefaultBlastRadiusStore } from './blast-radius-default.mjs';
 
 const verifier = new ProLicenseVerifier();
-const audit = new AppendOnlyAuditLog();
-const delegStore = new DelegationStore();
-const quotaStore = new BlastRadiusStore();
+const audit = new DefaultAuditLog();
+const delegStore = new DefaultDelegationStore();
+const quotaStore = new DefaultBlastRadiusStore();
 const backends = new PolyglotBackendManager();
 const probe = new RouterRouteProbe();
 
