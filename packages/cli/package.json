@@ -1,6 +1,6 @@
 {
   "name": "@orqenix-pro/cli",
-  "version": "0.6.1-phase-6",
+  "version": "0.6.4-phase-6",
   "description": "Orqenix Pro command-line interface foundation. Pro license token auth, output formatters, command framework. Subcommands ship in Parts 11B and 12.",
   "type": "module",
   "license": "BUSL-1.1",
@@ -32,14 +32,19 @@
     "verify": "tsx ../../scripts/gates/verify-phase-6-pro.ts"
   },
   "dependencies": {
-    "@orqenix/mesh-transport-core": "^0.6.0-phase-6",
-    "@orqenix/mesh-observability": "^0.6.0-phase-6",
+    "@orqenix/mesh-transport-core": "^0.6.0",
+    "@orqenix/mesh-observability": "^0.6.1",
     "@orqenix/mesh-routing": "^0.5.0",
     "@orqenix/audit-log": "^0.5.0",
     "@orqenix-pro/license": "^0.4.0",
     "@orqenix-pro/mesh-delegation": "^0.5.0",
     "@orqenix-pro/blast-radius": "^0.5.0",
-    "@orqenix-pro/polyglot-backend": "^0.5.0"
+    "@orqenix-pro/polyglot-backend": "^0.5.0",
+    "@orqenix/transport-security": "^0.6.1",
+    "@orqenix/mesh-transport-http": "^0.6.1",
+    "@orqenix/mesh-transport-libp2p": "^0.6.1",
+    "@orqenix/mesh-router": "^0.6.1",
+    "@orqenix/mesh-discovery": "^0.6.1"
   },
   "devDependencies": {
     "@types/node": "^22.7.0",

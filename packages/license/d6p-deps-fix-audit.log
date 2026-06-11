@@ -1,0 +1,48 @@
+npm notice
+npm notice package: @orqenix-pro/license@0.4.0
+npm notice Tarball Contents
+npm notice 226B CHANGELOG.md
+npm notice 1.3kB LICENSE
+npm notice 496B README.md
+npm notice 1.9kB dist/index.d.ts
+npm notice 5.1kB dist/index.js
+npm notice 1.5kB package.json
+npm notice Tarball Details
+npm notice name: @orqenix-pro/license
+npm notice version: 0.4.0
+npm notice filename: orqenix-pro-license-0.4.0.tgz
+npm notice package size: 3.9 kB
+npm notice unpacked size: 10.5 kB
+npm notice shasum: 7f310f0f406c73549719fefe1c684582d3fada4d
+npm notice integrity: sha512-+e/JdojK4FONc[...]LvUA1hrGTHSYw==
+npm notice total files: 6
+npm notice
+orqenix-pro-license-0.4.0.tgz
+npm notice
+npm notice package: @orqenix-pro/license@0.4.0
+npm notice Tarball Contents
+npm notice 226B CHANGELOG.md
+npm notice 1.3kB LICENSE
+npm notice 496B README.md
+npm notice 1.9kB dist/index.d.ts
+npm notice 5.1kB dist/index.js
+npm notice 1.5kB package.json
+npm notice Tarball Details
+npm notice name: @orqenix-pro/license
+npm notice version: 0.4.0
+npm notice filename: orqenix-pro-license-0.4.0.tgz
+npm notice package size: 3.9 kB
+npm notice unpacked size: 10.5 kB
+npm notice shasum: 12ddda10e11a4f7a8c62034ab8ef1724b49f5ae0
+npm notice integrity: sha512-70mbPZdyOXEJb[...]uutuT+r36st2Q==
+npm notice total files: 6
+npm notice
+npm notice Publishing to https://registry.npmjs.org/ with tag latest and public access
+npm error code E404
+npm error 404 Not Found - PUT https://registry.npmjs.org/@orqenix-pro%2flicense - Not found
+npm error 404
+npm error 404  '@orqenix-pro/license@0.4.0' is not in this registry.
+npm error 404
+npm error 404 Note that you can also install from a
+npm error 404 tarball, folder, http url, or git url.
+npm error A complete log of this run can be found in: C:\Users\vnet-1-vm-c1\AppData\Local\npm-cache\_logs\2026-06-11T03_43_09_311Z-debug-0.log

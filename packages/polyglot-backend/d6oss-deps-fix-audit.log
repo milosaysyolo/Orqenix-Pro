@@ -1,0 +1,18 @@
+npm notice
+npm notice package: @orqenix-pro/polyglot-backend@0.5.1
+npm notice Tarball Contents
+npm notice 693B dist/index.d.ts
+npm notice 292B dist/index.js
+npm notice 985B package.json
+npm notice Tarball Details
+npm notice name: @orqenix-pro/polyglot-backend
+npm notice version: 0.5.1
+npm notice filename: orqenix-pro-polyglot-backend-0.5.1.tgz
+npm notice package size: 817 B
+npm notice unpacked size: 2.0 kB
+npm notice shasum: 34c757aff63864d30397039870d35a96311b6ffa
+npm notice integrity: sha512-org5XjwVkJRJ1[...]yKUCbswHufv8w==
+npm notice total files: 3
+npm notice
+npm notice Publishing to https://registry.npmjs.org/ with tag latest and public access
++ @orqenix-pro/polyglot-backend@0.5.1
