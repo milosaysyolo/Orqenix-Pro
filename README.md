@@ -132,6 +132,12 @@ pnpm add @orqenix-pro/mesh-delegation
 pnpm add @orqenix-pro/blast-radius
 ```
 
+Install the Pro CLI globally (requires a Pro license token):
+
+```bash
+npm install -g @orqenix-pro/cli@^0.6.1
+```
+
 Upgrade your existing scope to Pro tier:
 
 ```bash

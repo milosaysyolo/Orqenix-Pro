@@ -2,6 +2,26 @@
 
 All notable changes to the Orqenix-Pro repo. Format based on Keep a Changelog 1.1.
 
+## [0.6.1-phase-6] - 2026-06-11
+
+### Fixed
+
+- Dependency specifications now use clean caret semver enabling forward-compatibility with future Phase 7+ releases
+- Wildcard deps (`"*"`) on `@orqenix/mesh-routing` and `@orqenix/audit-log` replaced with explicit `^0.5.0` ranges
+- `v0.6.0-phase-6` deprecated; users should upgrade with `npm install -g @orqenix-pro/cli@^0.6.1`
+
+### Changed
+
+- 4 Pro dependencies republished without phase tags:
+  - `@orqenix-pro/license`: 0.4.0 (was 0.4.0-phase-4)
+  - `@orqenix-pro/blast-radius`: 0.5.0 (was 0.5.0-phase-5)
+  - `@orqenix-pro/mesh-delegation`: 0.5.0 (was 0.5.0-phase-5)
+  - `@orqenix-pro/polyglot-backend`: 0.5.0 (was 0.5.0-phase-5)
+
+### Policy
+
+- From Phase 7 forward, package versions use clean semver without phase-N suffix
+
 ## [0.5.0-phase-5] — 2026-06-03
 
 ### Summary

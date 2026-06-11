@@ -1,0 +1,689 @@
+﻿
+# D6P-DEPS-FIX Audit Log
+Date: 2026-06-11T10:42:47Z
+Sprint: C (forward-compatibility hot-patch)
+
+AUDIT_LOG initialized
+===== Phase C: license version bump 0.4.0-phase-4 → 0.4.0 =====
+Bumped license to 0.4.0
+PASS: license version verified as 0.4.0
+
+## Build license@0.4.0
+
+> @orqenix-pro/license@0.4.0 build C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\packages\license
+> tsup src/index.ts --format esm --dts --clean
+
+[34mCLI[39m Building entry: src/index.ts
+[34mCLI[39m Using tsconfig: tsconfig.json
+[34mCLI[39m tsup v8.5.1
+[34mCLI[39m Target: es2022
+[34mCLI[39m Cleaning output folder
+[34mESM[39m Build start
+[32mESM[39m [1mdist\index.js [22m[32m4.96 KB[39m
+[32mESM[39m ΓÜí∩╕Å Build success in 91ms
+[34mDTS[39m Build start
+[32mDTS[39m ΓÜí∩╕Å Build success in 2264ms
+[32mDTS[39m [1mdist\index.d.ts [22m[32m1.88 KB[39m
+
+## Pack dry-run license@0.4.0
+
+## Publishing license@0.4.0
+FAIL: publish license@0.4.0 exit 1
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+FAIL: license@0.4.0 not visible after 5 min
+===== Phase C: blast-radius version bump 0.5.0-phase-5 → 0.5.0 =====
+Bumped blast-radius to 0.5.0
+PASS: blast-radius version verified as 0.5.0
+
+## Build blast-radius@0.5.0
+
+> @orqenix-pro/blast-radius@0.5.0 build C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\packages\blast-radius
+> tsc --build
+
+
+## Pack dry-run blast-radius@0.5.0
+
+## Publishing blast-radius@0.5.0
+FAIL: publish blast-radius@0.5.0 exit 1
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+FAIL: blast-radius@0.5.0 not visible after 5 min
+===== Phase C: mesh-delegation version bump 0.5.0-phase-5 → 0.5.0 =====
+Bumped mesh-delegation to 0.5.0
+PASS: mesh-delegation version verified as 0.5.0
+
+## Build mesh-delegation@0.5.0
+
+> @orqenix-pro/mesh-delegation@0.5.0 build C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\packages\mesh-delegation
+> tsc --build
+
+
+## Pack dry-run mesh-delegation@0.5.0
+
+## Publishing mesh-delegation@0.5.0
+FAIL: publish mesh-delegation@0.5.0 exit 1
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+FAIL: mesh-delegation@0.5.0 not visible after 5 min
+===== Phase C: polyglot-backend version bump 0.5.0-phase-5 → 0.5.0 =====
+Bumped polyglot-backend to 0.5.0
+PASS: polyglot-backend version verified as 0.5.0
+
+## Build polyglot-backend@0.5.0
+
+> @orqenix-pro/polyglot-backend@0.5.0 build C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\packages\polyglot-backend
+> tsc -p tsconfig.json
+
+
+## Pack dry-run polyglot-backend@0.5.0
+
+## Publishing polyglot-backend@0.5.0
+FAIL: publish polyglot-backend@0.5.0 exit 1
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+FAIL: polyglot-backend@0.5.0 not visible after 5 min
+
+## Phase C Summary
+FAIL: @orqenix-pro/license@0.4.0
+FAIL: @orqenix-pro/mesh-delegation@0.5.0
+FAIL: @orqenix-pro/blast-radius@0.5.0
+FAIL: @orqenix-pro/polyglot-backend@0.5.0
+===== Phase D: CLI version bump 0.6.0-phase-6 → 0.6.1-phase-6 =====
+CLI bumped to 0.6.1-phase-6
+Dependencies updated
+{
+  "@orqenix/mesh-transport-core": "^0.6.0",
+  "@orqenix/mesh-observability": "^0.6.0",
+  "@orqenix/mesh-routing": "^0.5.0",
+  "@orqenix/audit-log": "^0.5.0",
+  "@orqenix-pro/license": "^0.4.0",
+  "@orqenix-pro/mesh-delegation": "^0.5.0",
+  "@orqenix-pro/blast-radius": "^0.5.0",
+  "@orqenix-pro/polyglot-backend": "^0.5.0"
+}
+
+## New CLI dependencies
+{
+  "@orqenix/mesh-transport-core": "^0.6.0",
+  "@orqenix/mesh-observability": "^0.6.0",
+  "@orqenix/mesh-routing": "^0.5.0",
+  "@orqenix/audit-log": "^0.5.0",
+  "@orqenix-pro/license": "^0.4.0",
+  "@orqenix-pro/mesh-delegation": "^0.5.0",
+  "@orqenix-pro/blast-radius": "^0.5.0",
+  "@orqenix-pro/polyglot-backend": "^0.5.0"
+}
+
+## Checks
+OK: no wildcards, no phase tags
+
+## pnpm install after deps change
+Scope: all 14 workspace projects
+(node:18440) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+@orqenix/memory-tiers is linked to C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\node_modules from C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\memory-tiers
+@orqenix/storage-diff is linked to C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\node_modules from C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\storage-diff
+@orqenix/storage-sqlite is linked to C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\node_modules from C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\storage-sqlite
+@orqenix/kb-chat is linked to C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\node_modules from C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\kb-chat
+@orqenix/scope-link is linked to C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\node_modules from C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\scope-link
+@orqenix/llm-adapter-ollama is linked to C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\node_modules from C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\llm-adapter-ollama
+@orqenix/provenance is linked to C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\node_modules from C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\provenance
+@orqenix/workspace is linked to C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\node_modules from C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\workspace
+@orqenix/mesh-routing is linked to C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\node_modules from C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\mesh-routing
+@orqenix/telemetry is linked to C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\node_modules from C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\telemetry
+@orqenix/detach is linked to C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\node_modules from C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\detach
+@orqenix/hooks is linked to C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\node_modules from C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\hooks
+@orqenix/audit-log is linked to C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\node_modules from C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\audit-log
+@orqenix/prompt-rewriter is linked to C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\node_modules from C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\prompt-rewriter
+@orqenix/memory-distiller is linked to C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\node_modules from C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\memory-distiller
+C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\packages\cli:
+ΓÇëERR_PNPM_JSON_PARSEΓÇë Unexpected token '@', "@{value={"... is not valid JSON while parsing '@{value={  "name": "@orqenix/mesh-trans' in C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\mesh-transport-core\package.json
+
+This error happened while installing a direct dependency of C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\packages\cli
+
+## Build CLI
+
+> @orqenix-pro/cli@0.6.1-phase-6 build C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\packages\cli
+> tsc -p tsconfig.json
+
+src/application.ts(2,41): error TS2307: Cannot find module '@orqenix/mesh-observability' or its corresponding type declarations.
+src/command.ts(6,46): error TS2307: Cannot find module '@orqenix/mesh-observability' or its corresponding type declarations.
+src/license.ts(4,30): error TS2307: Cannot find module '@orqenix/mesh-transport-core' or its corresponding type declarations.
+src/subcommands/delegation-chain-show.ts(1,30): error TS2307: Cannot find module '@orqenix/mesh-transport-core' or its corresponding type declarations.
+src/subcommands/delegation-store.ts(1,30): error TS2307: Cannot find module '@orqenix/mesh-transport-core' or its corresponding type declarations.
+src/subcommands/quota-reset.ts(1,30): error TS2307: Cannot find module '@orqenix/mesh-transport-core' or its corresponding type declarations.
+src/subcommands/quota-set.ts(1,30): error TS2307: Cannot find module '@orqenix/mesh-transport-core' or its corresponding type declarations.
+src/subcommands/quota-show.ts(1,30): error TS2307: Cannot find module '@orqenix/mesh-transport-core' or its corresponding type declarations.
+src/subcommands/quota-store.ts(1,30): error TS2307: Cannot find module '@orqenix/mesh-transport-core' or its corresponding type declarations.
+C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\packages\cli:
+ΓÇëERR_PNPM_RECURSIVE_RUN_FIRST_FAILΓÇë @orqenix-pro/cli@0.6.1-phase-6 build: `tsc -p tsconfig.json`
+Exit status 2
+
+## Pack dry-run CLI v0.6.1-phase-6
+
+## Publishing CLI v0.6.1-phase-6
+FAIL: cli publish exit 1
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+FAIL: cli@0.6.1-phase-6 not visible after 5 min
+
+## pnpm install after lockfile fix
+Scope: all 14 workspace projects
+(node:16624) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+@orqenix/storage-sqlite is linked to C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\node_modules from C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\storage-sqlite
+@orqenix/storage-diff is linked to C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\node_modules from C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\storage-diff
+@orqenix/kb-chat is linked to C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\node_modules from C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\kb-chat
+@orqenix/memory-tiers is linked to C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\node_modules from C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\memory-tiers
+@orqenix/llm-adapter-ollama is linked to C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\node_modules from C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\llm-adapter-ollama
+@orqenix/scope-link is linked to C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\node_modules from C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\scope-link
+@orqenix/provenance is linked to C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\node_modules from C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\provenance
+@orqenix/mesh-routing is linked to C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\node_modules from C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\mesh-routing
+@orqenix/workspace is linked to C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\node_modules from C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\workspace
+@orqenix/hooks is linked to C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\node_modules from C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\hooks
+@orqenix/telemetry is linked to C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\node_modules from C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\telemetry
+@orqenix/detach is linked to C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\node_modules from C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\detach
+@orqenix/audit-log is linked to C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\node_modules from C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\audit-log
+@orqenix/prompt-rewriter is linked to C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\node_modules from C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\prompt-rewriter
+@orqenix/memory-distiller is linked to C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\node_modules from C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\memory-distiller
+C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\packages\cli:
+ΓÇëERR_PNPM_JSON_PARSEΓÇë Unexpected token '@', "@{value={"... is not valid JSON while parsing '@{value={  "name": "@orqenix/mesh-obser' in C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\mesh-observability\package.json
+
+This error happened while installing a direct dependency of C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\packages\cli
+
+## Build CLI v0.6.1-phase-6
+
+> @orqenix-pro/cli@0.6.1-phase-6 build C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\packages\cli
+> tsc -p tsconfig.json
+
+src/application.ts(2,41): error TS2307: Cannot find module '@orqenix/mesh-observability' or its corresponding type declarations.
+src/command.ts(6,46): error TS2307: Cannot find module '@orqenix/mesh-observability' or its corresponding type declarations.
+src/license.ts(4,30): error TS2307: Cannot find module '@orqenix/mesh-transport-core' or its corresponding type declarations.
+src/subcommands/delegation-chain-show.ts(1,30): error TS2307: Cannot find module '@orqenix/mesh-transport-core' or its corresponding type declarations.
+src/subcommands/delegation-store.ts(1,30): error TS2307: Cannot find module '@orqenix/mesh-transport-core' or its corresponding type declarations.
+src/subcommands/quota-reset.ts(1,30): error TS2307: Cannot find module '@orqenix/mesh-transport-core' or its corresponding type declarations.
+src/subcommands/quota-set.ts(1,30): error TS2307: Cannot find module '@orqenix/mesh-transport-core' or its corresponding type declarations.
+src/subcommands/quota-show.ts(1,30): error TS2307: Cannot find module '@orqenix/mesh-transport-core' or its corresponding type declarations.
+src/subcommands/quota-store.ts(1,30): error TS2307: Cannot find module '@orqenix/mesh-transport-core' or its corresponding type declarations.
+C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\packages\cli:
+ΓÇëERR_PNPM_RECURSIVE_RUN_FIRST_FAILΓÇë @orqenix-pro/cli@0.6.1-phase-6 build: `tsc -p tsconfig.json`
+Exit status 2
+FAIL: CLI build exit 2
+
+## Pack dry-run CLI v0.6.1-phase-6
+
+## Publishing CLI v0.6.1-phase-6
+FAIL: cli publish exit 1
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+Waiting 30s...
+FAIL: cli@0.6.1-phase-6 not visible after 5 min
+
+## All Published Versions - Final Check
+FAIL: @orqenix-pro/license@0.4.0 - got ''
+FAIL: @orqenix-pro/mesh-delegation@0.5.0 - got ''
+FAIL: @orqenix-pro/cli@0.6.1-phase-6 - got ''
+FAIL: @orqenix-pro/blast-radius@0.5.0 - got ''
+FAIL: @orqenix-pro/polyglot-backend@0.5.0 - got ''
+
+## Phase D: Rebuild CLI v0.6.1-phase-6
+
+> @orqenix-pro/cli@0.6.1-phase-6 build C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\packages\cli
+> tsc -p tsconfig.json
+
+src/application.ts(2,41): error TS2307: Cannot find module '@orqenix/mesh-observability' or its corresponding type declarations.
+src/command.ts(6,46): error TS2307: Cannot find module '@orqenix/mesh-observability' or its corresponding type declarations.
+src/license.ts(4,30): error TS2307: Cannot find module '@orqenix/mesh-transport-core' or its corresponding type declarations.
+src/subcommands/delegation-chain-show.ts(1,30): error TS2307: Cannot find module '@orqenix/mesh-transport-core' or its corresponding type declarations.
+src/subcommands/delegation-store.ts(1,30): error TS2307: Cannot find module '@orqenix/mesh-transport-core' or its corresponding type declarations.
+src/subcommands/quota-reset.ts(1,30): error TS2307: Cannot find module '@orqenix/mesh-transport-core' or its corresponding type declarations.
+src/subcommands/quota-set.ts(1,30): error TS2307: Cannot find module '@orqenix/mesh-transport-core' or its corresponding type declarations.
+src/subcommands/quota-show.ts(1,30): error TS2307: Cannot find module '@orqenix/mesh-transport-core' or its corresponding type declarations.
+src/subcommands/quota-store.ts(1,30): error TS2307: Cannot find module '@orqenix/mesh-transport-core' or its corresponding type declarations.
+C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\packages\cli:
+ΓÇëERR_PNPM_RECURSIVE_RUN_FIRST_FAILΓÇë @orqenix-pro/cli@0.6.1-phase-6 build: `tsc -p tsconfig.json`
+Exit status 2
+FAIL: CLI build exit 2
+
+## Publishing CLI v0.6.1-phase-6
+PASS: CLI v0.6.1-phase-6 published
+
+## CLI v0.6.1-phase-6 deps on registry
+{
+  "@orqenix/mesh-transport-core": "^0.6.0-phase-6",
+  "@orqenix/mesh-observability": "^0.6.0-phase-6",
+  "@orqenix/mesh-routing": "^0.5.0",
+  "@orqenix/audit-log": "^0.5.0",
+  "@orqenix-pro/license": "^0.4.0",
+  "@orqenix-pro/mesh-delegation": "^0.5.0",
+  "@orqenix-pro/blast-radius": "^0.5.0",
+  "@orqenix-pro/polyglot-backend": "^0.5.0"
+}
+
+## Verify no wildcards or phase-tagged pro deps
+OK: no wildcards
+PASS: @orqenix-pro/cli@0.6.1-phase-6 (shasum: 4e16a5b5bfa18240359b5e67115705c95640e22b)
+
+===== Phase E: Live install smoke CLI v0.6.1-phase-6 =====
+
+## Install CLI v0.6.1-phase-6
+
+## Verify installed deps in node_modules
+  FAIL: @orqenix-pro/license NOT installed
+  @orqenix-pro/blast-radius installed: 0.5.0
+  @orqenix-pro/mesh-delegation installed: 0.5.0
+  FAIL: @orqenix-pro/polyglot-backend NOT installed
+
+## Smoke commands
+help exit code: 1
+auth exit code: 1
+quota exit code: 1
+
+## Final
+FAIL: help=1 auth=1 quota=1
+help exit code: 
+auth exit code: 
+quota exit code: 
+
+## Final
+FAIL: help= auth= quota=
+
+===== Phase E: Live install smoke (retry) =====
+
+TMP dir: C:\Users\VNET-1~1\AppData\Local\Temp\d6p-deps-fix-smoke-1449074259
+Scope: all 14 workspace projects
+(node:16296) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+@orqenix/storage-diff is linked to C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\node_modules from C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\storage-diff
+@orqenix/storage-sqlite is linked to C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\node_modules from C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\storage-sqlite
+@orqenix/kb-chat is linked to C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\node_modules from C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\kb-chat
+@orqenix/memory-tiers is linked to C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\node_modules from C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\memory-tiers
+@orqenix/llm-adapter-ollama is linked to C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\node_modules from C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\llm-adapter-ollama
+@orqenix/scope-link is linked to C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\node_modules from C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\scope-link
+@orqenix/mesh-routing is linked to C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\node_modules from C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\mesh-routing
+@orqenix/provenance is linked to C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\node_modules from C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\provenance
+@orqenix/workspace is linked to C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\node_modules from C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\workspace
+@orqenix/hooks is linked to C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\node_modules from C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\hooks
+@orqenix/telemetry is linked to C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\node_modules from C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\telemetry
+@orqenix/detach is linked to C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\node_modules from C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\detach
+@orqenix/audit-log is linked to C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\node_modules from C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\audit-log
+@orqenix/prompt-rewriter is linked to C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\node_modules from C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\prompt-rewriter
+@orqenix/memory-distiller is linked to C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\node_modules from C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\memory-distiller
+Progress: resolved 0, reused 1, downloaded 0, added 0
+packages/kb-code-graph                   | ΓÇëWARNΓÇë deprecated kuzu@0.3.2
+Progress: resolved 291, reused 186, downloaded 0, added 0
+ΓÇëWARNΓÇë 6 deprecated subdependencies found: are-we-there-yet@3.0.1, gauge@4.0.4, glob@10.5.0, node-domexception@1.0.0, npmlog@6.0.2, tar@6.2.1
+Packages: +4
+++++
+Progress: resolved 518, reused 403, downloaded 4, added 4, done
+ΓÇëWARNΓÇë Failed to create bin at C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\node_modules\.pnpm\node_modules\.bin\arrow2csv. ENOENT: no such file or directory, stat 'C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix-Pro\node_modules\.pnpm\node_modules\apache-arrow\bin\arrow2csv.cjs.EXE'
+
+devDependencies:
++ @changesets/changelog-github 0.5.0
++ @changesets/cli 2.27.10
++ @orqenix-pro/blast-radius 0.5.0 <- packages\blast-radius
++ @orqenix-pro/kb-code-graph 0.5.0-phase-5 <- packages\kb-code-graph
++ @orqenix-pro/kb-embedding-lance 0.5.0-phase-5 <- packages\kb-embedding-lance
++ @orqenix-pro/kb-token-store 0.5.0-phase-5 <- packages\kb-token-store
++ @orqenix-pro/memory-distiller-llm 0.5.0-phase-5 <- packages\memory-distiller-llm
++ @orqenix-pro/mesh-delegation 0.5.0 <- packages\mesh-delegation
++ @orqenix-pro/pro-migration 0.5.0-phase-5 <- packages\pro-migration
++ @orqenix/audit-log 0.5.0 <- ..\Orqenix\packages\audit-log
++ @orqenix/detach 0.5.0 <- ..\Orqenix\packages\detach
++ @orqenix/hooks 0.5.0 <- ..\Orqenix\packages\hooks
++ @orqenix/kb-chat 0.5.0 <- ..\Orqenix\packages\kb-chat
++ @orqenix/llm-adapter-ollama 0.5.0 <- ..\Orqenix\packages\llm-adapter-ollama
++ @orqenix/memory-distiller 0.5.0 <- ..\Orqenix\packages\memory-distiller
++ @orqenix/memory-tiers 0.5.0 <- ..\Orqenix\packages\memory-tiers
++ @orqenix/mesh-routing 0.5.0 <- ..\Orqenix\packages\mesh-routing
++ @orqenix/prompt-rewriter 0.5.0 <- ..\Orqenix\packages\prompt-rewriter
++ @orqenix/provenance 0.5.0 <- ..\Orqenix\packages\provenance
++ @orqenix/scope-link 0.5.0 <- ..\Orqenix\packages\scope-link
++ @orqenix/storage-diff 0.5.0 <- ..\Orqenix\packages\storage-diff
++ @orqenix/storage-sqlite 0.5.0 <- ..\Orqenix\packages\storage-sqlite
++ @orqenix/telemetry 0.5.0 <- ..\Orqenix\packages\telemetry
++ @orqenix/workspace 0.5.0 <- ..\Orqenix\packages\workspace
++ tsx 4.22.4
++ typescript 5.9.3
++ vitest 1.6.1
++ yaml 2.9.0
+
+Done in 3.6s
+
+===== Phase D (retry): pack dry-run + publish CLI v0.6.1-phase-6 =====
+
+## Pack dry-run
+npm notice
+npm notice package: @orqenix-pro/cli@0.6.1-phase-6
+npm notice Tarball Contents
+npm notice 170B CHANGELOG.md
+npm notice 179B LICENSE
+npm notice 401B README.md
+npm notice 932B bin/audit-log-default.mjs
+npm notice 1.3kB bin/blast-radius-default.mjs
+npm notice 804B bin/delegation-store-default.mjs
+npm notice 1.8kB bin/orqenix.mjs
+npm notice 1.4kB bin/route-probe-default.mjs
+npm notice 744B dist/application.d.ts
+npm notice 840B dist/application.d.ts.map
+npm notice 4.4kB dist/application.js
+npm notice 4.2kB dist/application.js.map
+npm notice 805B dist/command.d.ts
+npm notice 906B dist/command.d.ts.map
+npm notice 46B dist/command.js
+npm notice 106B dist/command.js.map
+npm notice 1.1kB dist/exit-codes.d.ts
+npm notice 902B dist/exit-codes.d.ts.map
+npm notice 1.7kB dist/exit-codes.js
+npm notice 2.0kB dist/exit-codes.js.map
+npm notice 443B dist/flags.d.ts
+npm notice 541B dist/flags.d.ts.map
+npm notice 2.8kB dist/flags.js
+npm notice 3.5kB dist/flags.js.map
+npm notice 824B dist/formatters.d.ts
+npm notice 865B dist/formatters.d.ts.map
+npm notice 3.2kB dist/formatters.js
+npm notice 4.3kB dist/formatters.js.map
+npm notice 294B dist/index.d.ts
+npm notice 278B dist/index.d.ts.map
+npm notice 292B dist/index.js
+npm notice 276B dist/index.js.map
+npm notice 725B dist/license.d.ts
+npm notice 789B dist/license.d.ts.map
+npm notice 1.6kB dist/license.js
+npm notice 1.6kB dist/license.js.map
+npm notice 300B dist/registry.d.ts
+npm notice 382B dist/registry.d.ts.map
+npm notice 1.0kB dist/registry.js
+npm notice 1.4kB dist/registry.js.map
+npm notice 136B dist/subcommands/auth-status.d.ts
+npm notice 216B dist/subcommands/auth-status.d.ts.map
+npm notice 749B dist/subcommands/auth-status.js
+npm notice 716B dist/subcommands/auth-status.js.map
+npm notice 582B dist/subcommands/backend-manager.d.ts
+npm notice 659B dist/subcommands/backend-manager.d.ts.map
+npm notice 186B dist/subcommands/backend-manager.js
+npm notice 305B dist/subcommands/backend-manager.js.map
+npm notice 302B dist/subcommands/backend-status.d.ts
+npm notice 343B dist/subcommands/backend-status.d.ts.map
+npm notice 1.2kB dist/subcommands/backend-status.js
+npm notice 1.2kB dist/subcommands/backend-status.js.map
+npm notice 378B dist/subcommands/backend-switch.d.ts
+npm notice 418B dist/subcommands/backend-switch.d.ts.map
+npm notice 2.4kB dist/subcommands/backend-switch.js
+npm notice 2.1kB dist/subcommands/backend-switch.js.map
+npm notice 328B dist/subcommands/delegation-chain-show.d.ts
+npm notice 357B dist/subcommands/delegation-chain-show.d.ts.map
+npm notice 2.6kB dist/subcommands/delegation-chain-show.js
+npm notice 2.7kB dist/subcommands/delegation-chain-show.js.map
+npm notice 346B dist/subcommands/delegation-revoke.d.ts
+npm notice 385B dist/subcommands/delegation-revoke.d.ts.map
+npm notice 2.5kB dist/subcommands/delegation-revoke.js
+npm notice 2.1kB dist/subcommands/delegation-revoke.js.map
+npm notice 1.1kB dist/subcommands/delegation-store.d.ts
+npm notice 1.4kB dist/subcommands/delegation-store.d.ts.map
+npm notice 55B dist/subcommands/delegation-store.js
+npm notice 139B dist/subcommands/delegation-store.js.map
+npm notice 618B dist/subcommands/helpers.d.ts
+npm notice 717B dist/subcommands/helpers.d.ts.map
+npm notice 1.5kB dist/subcommands/helpers.js
+npm notice 2.1kB dist/subcommands/helpers.js.map
+npm notice 601B dist/subcommands/index.d.ts
+npm notice 483B dist/subcommands/index.d.ts.map
+npm notice 599B dist/subcommands/index.js
+npm notice 481B dist/subcommands/index.js.map
+npm notice 1.3kB dist/subcommands/inspector.d.ts
+npm notice 1.3kB dist/subcommands/inspector.d.ts.map
+npm notice 989B dist/subcommands/inspector.js
+npm notice 1.0kB dist/subcommands/inspector.js.map
+npm notice 363B dist/subcommands/mesh-inspect.d.ts
+npm notice 405B dist/subcommands/mesh-inspect.d.ts.map
+npm notice 2.0kB dist/subcommands/mesh-inspect.js
+npm notice 2.0kB dist/subcommands/mesh-inspect.js.map
+npm notice 272B dist/subcommands/mesh-route.d.ts
+npm notice 332B dist/subcommands/mesh-route.d.ts.map
+npm notice 1.8kB dist/subcommands/mesh-route.js
+npm notice 1.9kB dist/subcommands/mesh-route.js.map
+npm notice 352B dist/subcommands/quota-reset.d.ts
+npm notice 408B dist/subcommands/quota-reset.d.ts.map
+npm notice 2.2kB dist/subcommands/quota-reset.js
+npm notice 1.9kB dist/subcommands/quota-reset.js.map
+npm notice 344B dist/subcommands/quota-set.d.ts
+npm notice 404B dist/subcommands/quota-set.d.ts.map
+npm notice 2.3kB dist/subcommands/quota-set.js
+npm notice 2.0kB dist/subcommands/quota-set.js.map
+npm notice 272B dist/subcommands/quota-show.d.ts
+npm notice 331B dist/subcommands/quota-show.d.ts.map
+npm notice 1.2kB dist/subcommands/quota-show.js
+npm notice 1.1kB dist/subcommands/quota-show.js.map
+npm notice 901B dist/subcommands/quota-store.d.ts
+npm notice 939B dist/subcommands/quota-store.d.ts.map
+npm notice 282B dist/subcommands/quota-store.js
+npm notice 322B dist/subcommands/quota-store.js.map
+npm notice 669B dist/subcommands/route-probe.d.ts
+npm notice 784B dist/subcommands/route-probe.d.ts.map
+npm notice 712B dist/subcommands/route-probe.js
+npm notice 736B dist/subcommands/route-probe.js.map
+npm notice 1.7kB package.json
+npm notice Tarball Details
+npm notice name: @orqenix-pro/cli
+npm notice version: 0.6.1-phase-6
+npm notice filename: orqenix-pro-cli-0.6.1-phase-6.tgz
+npm notice package size: 26.8 kB
+npm notice unpacked size: 116.5 kB
+npm notice shasum: 4e16a5b5bfa18240359b5e67115705c95640e22b
+npm notice integrity: sha512-FqfVvouNbv5jv[...]Cb+VoS1DwHsTA==
+npm notice total files: 109
+npm notice
+orqenix-pro-cli-0.6.1-phase-6.tgz
+
+## Publishing CLI v0.6.1-phase-6
+npm notice
+npm notice package: @orqenix-pro/cli@0.6.1-phase-6
+npm notice Tarball Contents
+npm notice 170B CHANGELOG.md
+npm notice 179B LICENSE
+npm notice 401B README.md
+npm notice 932B bin/audit-log-default.mjs
+npm notice 1.3kB bin/blast-radius-default.mjs
+npm notice 804B bin/delegation-store-default.mjs
+npm notice 1.8kB bin/orqenix.mjs
+npm notice 1.4kB bin/route-probe-default.mjs
+npm notice 744B dist/application.d.ts
+npm notice 840B dist/application.d.ts.map
+npm notice 4.4kB dist/application.js
+npm notice 4.2kB dist/application.js.map
+npm notice 805B dist/command.d.ts
+npm notice 906B dist/command.d.ts.map
+npm notice 46B dist/command.js
+npm notice 106B dist/command.js.map
+npm notice 1.1kB dist/exit-codes.d.ts
+npm notice 902B dist/exit-codes.d.ts.map
+npm notice 1.7kB dist/exit-codes.js
+npm notice 2.0kB dist/exit-codes.js.map
+npm notice 443B dist/flags.d.ts
+npm notice 541B dist/flags.d.ts.map
+npm notice 2.8kB dist/flags.js
+npm notice 3.5kB dist/flags.js.map
+npm notice 824B dist/formatters.d.ts
+npm notice 865B dist/formatters.d.ts.map
+npm notice 3.2kB dist/formatters.js
+npm notice 4.3kB dist/formatters.js.map
+npm notice 294B dist/index.d.ts
+npm notice 278B dist/index.d.ts.map
+npm notice 292B dist/index.js
+npm notice 276B dist/index.js.map
+npm notice 725B dist/license.d.ts
+npm notice 789B dist/license.d.ts.map
+npm notice 1.6kB dist/license.js
+npm notice 1.6kB dist/license.js.map
+npm notice 300B dist/registry.d.ts
+npm notice 382B dist/registry.d.ts.map
+npm notice 1.0kB dist/registry.js
+npm notice 1.4kB dist/registry.js.map
+npm notice 136B dist/subcommands/auth-status.d.ts
+npm notice 216B dist/subcommands/auth-status.d.ts.map
+npm notice 749B dist/subcommands/auth-status.js
+npm notice 716B dist/subcommands/auth-status.js.map
+npm notice 582B dist/subcommands/backend-manager.d.ts
+npm notice 659B dist/subcommands/backend-manager.d.ts.map
+npm notice 186B dist/subcommands/backend-manager.js
+npm notice 305B dist/subcommands/backend-manager.js.map
+npm notice 302B dist/subcommands/backend-status.d.ts
+npm notice 343B dist/subcommands/backend-status.d.ts.map
+npm notice 1.2kB dist/subcommands/backend-status.js
+npm notice 1.2kB dist/subcommands/backend-status.js.map
+npm notice 378B dist/subcommands/backend-switch.d.ts
+npm notice 418B dist/subcommands/backend-switch.d.ts.map
+npm notice 2.4kB dist/subcommands/backend-switch.js
+npm notice 2.1kB dist/subcommands/backend-switch.js.map
+npm notice 328B dist/subcommands/delegation-chain-show.d.ts
+npm notice 357B dist/subcommands/delegation-chain-show.d.ts.map
+npm notice 2.6kB dist/subcommands/delegation-chain-show.js
+npm notice 2.7kB dist/subcommands/delegation-chain-show.js.map
+npm notice 346B dist/subcommands/delegation-revoke.d.ts
+npm notice 385B dist/subcommands/delegation-revoke.d.ts.map
+npm notice 2.5kB dist/subcommands/delegation-revoke.js
+npm notice 2.1kB dist/subcommands/delegation-revoke.js.map
+npm notice 1.1kB dist/subcommands/delegation-store.d.ts
+npm notice 1.4kB dist/subcommands/delegation-store.d.ts.map
+npm notice 55B dist/subcommands/delegation-store.js
+npm notice 139B dist/subcommands/delegation-store.js.map
+npm notice 618B dist/subcommands/helpers.d.ts
+npm notice 717B dist/subcommands/helpers.d.ts.map
+npm notice 1.5kB dist/subcommands/helpers.js
+npm notice 2.1kB dist/subcommands/helpers.js.map
+npm notice 601B dist/subcommands/index.d.ts
+npm notice 483B dist/subcommands/index.d.ts.map
+npm notice 599B dist/subcommands/index.js
+npm notice 481B dist/subcommands/index.js.map
+npm notice 1.3kB dist/subcommands/inspector.d.ts
+npm notice 1.3kB dist/subcommands/inspector.d.ts.map
+npm notice 989B dist/subcommands/inspector.js
+npm notice 1.0kB dist/subcommands/inspector.js.map
+npm notice 363B dist/subcommands/mesh-inspect.d.ts
+npm notice 405B dist/subcommands/mesh-inspect.d.ts.map
+npm notice 2.0kB dist/subcommands/mesh-inspect.js
+npm notice 2.0kB dist/subcommands/mesh-inspect.js.map
+npm notice 272B dist/subcommands/mesh-route.d.ts
+npm notice 332B dist/subcommands/mesh-route.d.ts.map
+npm notice 1.8kB dist/subcommands/mesh-route.js
+npm notice 1.9kB dist/subcommands/mesh-route.js.map
+npm notice 352B dist/subcommands/quota-reset.d.ts
+npm notice 408B dist/subcommands/quota-reset.d.ts.map
+npm notice 2.2kB dist/subcommands/quota-reset.js
+npm notice 1.9kB dist/subcommands/quota-reset.js.map
+npm notice 344B dist/subcommands/quota-set.d.ts
+npm notice 404B dist/subcommands/quota-set.d.ts.map
+npm notice 2.3kB dist/subcommands/quota-set.js
+npm notice 2.0kB dist/subcommands/quota-set.js.map
+npm notice 272B dist/subcommands/quota-show.d.ts
+npm notice 331B dist/subcommands/quota-show.d.ts.map
+npm notice 1.2kB dist/subcommands/quota-show.js
+npm notice 1.1kB dist/subcommands/quota-show.js.map
+npm notice 901B dist/subcommands/quota-store.d.ts
+npm notice 939B dist/subcommands/quota-store.d.ts.map
+npm notice 282B dist/subcommands/quota-store.js
+npm notice 322B dist/subcommands/quota-store.js.map
+npm notice 669B dist/subcommands/route-probe.d.ts
+npm notice 784B dist/subcommands/route-probe.d.ts.map
+npm notice 712B dist/subcommands/route-probe.js
+npm notice 736B dist/subcommands/route-probe.js.map
+npm notice 1.7kB package.json
+npm notice Tarball Details
+npm notice name: @orqenix-pro/cli
+npm notice version: 0.6.1-phase-6
+npm notice filename: orqenix-pro-cli-0.6.1-phase-6.tgz
+npm notice package size: 27.5 kB
+npm notice unpacked size: 116.5 kB
+npm notice shasum: 9a94641450907a3ed68e4632c2d707bb3ee56f74
+npm notice integrity: sha512-EMU/9ysJRG4LP[...]Lz+2qojiLFTwQ==
+npm notice total files: 109
+npm notice
+npm notice Publishing to https://registry.npmjs.org/ with tag latest and public access
+npm error code E403
+npm error 403 403 Forbidden - PUT https://registry.npmjs.org/@orqenix-pro%2fcli - You cannot publish over the previously published versions: 0.6.1-phase-6.
+npm error 403 In most cases, you or one of your dependencies are requesting
+npm error 403 a package version that is forbidden by your security policy, or
+npm error 403 on a server you do not have access to.
+npm error A complete log of this run can be found in: C:\Users\vnet-1-vm-c1\AppData\Local\npm-cache\_logs\2026-06-11T06_23_00_786Z-debug-0.log
+FAIL: cli publish exit 1
+
+## CLI v0.6.1-phase-6 deps on registry:
+{
+  "@orqenix/mesh-transport-core": "^0.6.0-phase-6",
+  "@orqenix/mesh-observability": "^0.6.0-phase-6",
+  "@orqenix/mesh-routing": "^0.5.0",
+  "@orqenix/audit-log": "^0.5.0",
+  "@orqenix-pro/license": "^0.4.0",
+  "@orqenix-pro/mesh-delegation": "^0.5.0",
+  "@orqenix-pro/blast-radius": "^0.5.0",
+  "@orqenix-pro/polyglot-backend": "^0.5.0"
+}
+OK: deps shape clean (2 OSS mesh deps keep phase tag per rule #8)
+PASS: @orqenix-pro/cli@0.6.1-phase-6 verified
+
+===== Phase E: Live install smoke CLI v0.6.1-phase-6 =====
+
+===== Phase F: Deprecate old versions =====
+## Deprecate @orqenix-pro/cli@0.6.0-phase-6
+
+## Deprecate @orqenix-pro/license@0.4.0-phase-4
+
+## Deprecate @orqenix-pro/blast-radius@0.5.0-phase-5
+
+## Deprecate @orqenix-pro/mesh-delegation@0.5.0-phase-5
+
+## Deprecate @orqenix-pro/polyglot-backend@0.5.0-phase-5
+
+## Verify deprecations
+CLI deprecated message: Use @orqenix-pro/cli@^0.6.1 for proper semver-based dep updates. See https://github.com/milosaysyolo/Orqenix-Pro/releases/tag/v0.6.1-phase-6
+PASS: CLI v0.6.0-phase-6 deprecated
