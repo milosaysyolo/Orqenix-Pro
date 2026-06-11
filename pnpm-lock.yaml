@@ -143,17 +143,17 @@ importers:
   packages/cli:
     dependencies:
       '@orqenix-pro/blast-radius':
-        specifier: workspace:*
-        version: link:../blast-radius
+        specifier: ^0.5.0
+        version: 0.5.0
       '@orqenix-pro/license':
-        specifier: workspace:*
-        version: link:../license
+        specifier: ^0.4.0
+        version: 0.4.0
       '@orqenix-pro/mesh-delegation':
-        specifier: workspace:*
-        version: link:../mesh-delegation
+        specifier: ^0.5.0
+        version: 0.5.0
       '@orqenix-pro/polyglot-backend':
-        specifier: workspace:*
-        version: link:../polyglot-backend
+        specifier: ^0.5.0
+        version: 0.5.0
       '@orqenix/audit-log':
         specifier: C:\Users\vnet-1-vm-c1\Documents\GitHub\Orqenix\packages\audit-log
         version: link:../../../Orqenix/packages/audit-log
@@ -1167,6 +1167,21 @@ packages:
   '@nodelib/fs.walk@1.2.8':
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
+
+  '@orqenix-pro/blast-radius@0.5.0':
+    resolution: {integrity: sha512-v6idUbR2XbI4vTiqJhtaULpkbQtgF1Apu3MAO+bS+manjWH7/uo0cZn9edWPlYeh1WRXBQsxj6lpHlEBer50vQ==}
+    engines: {node: '>=20.0.0'}
+
+  '@orqenix-pro/license@0.4.0':
+    resolution: {integrity: sha512-+e/JdojK4FONcZCbZ2V+lNZccZxAqyUP+y0IQDq+NCc25oQA5WECLYML6aLwPrRlugkbS6Gj0LvUA1hrGTHSYw==}
+    engines: {node: '>=20.0.0'}
+
+  '@orqenix-pro/mesh-delegation@0.5.0':
+    resolution: {integrity: sha512-ZJu1HKRdg4T9PrJnwCTfj7UBhPd3Lt+6DctV7WSvXQ4LAE+shIAeMjHj5YdgujmXlix3mgyYCiLYqHKjEF56Pw==}
+    engines: {node: '>=20.0.0'}
+
+  '@orqenix-pro/polyglot-backend@0.5.0':
+    resolution: {integrity: sha512-btQKeeRJ+/WjO38FvJmmEYO2FE7cQplzaf+WIXuDgDkBrKCNvzinciEgCxxHmmkvPVFQuZlZPMlUU8N08H6CVw==}
 
   '@pkgjs/parseargs@0.11.0':
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
@@ -3295,6 +3310,29 @@ snapshots:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.20.1
+
+  '@orqenix-pro/blast-radius@0.5.0':
+    dependencies:
+      '@orqenix/audit-log': link:../Orqenix/packages/audit-log
+      '@orqenix/core': link:../Orqenix/packages/core
+      '@orqenix/scope-identity': link:../Orqenix/packages/scope-identity
+      '@orqenix/storage-sqlite': link:../Orqenix/packages/storage-sqlite
+      zod: 3.25.76
+
+  '@orqenix-pro/license@0.4.0': {}
+
+  '@orqenix-pro/mesh-delegation@0.5.0':
+    dependencies:
+      '@orqenix/capability-tokens': link:../Orqenix/packages/capability-tokens
+      '@orqenix/core': link:../Orqenix/packages/core
+      '@orqenix/mesh-routing': link:../Orqenix/packages/mesh-routing
+      '@orqenix/provenance': link:../Orqenix/packages/provenance
+      '@orqenix/scope-identity': link:../Orqenix/packages/scope-identity
+      '@orqenix/scope-link': link:../Orqenix/packages/scope-link
+      '@orqenix/storage-sqlite': link:../Orqenix/packages/storage-sqlite
+      zod: 3.25.76
+
+  '@orqenix-pro/polyglot-backend@0.5.0': {}
 
   '@pkgjs/parseargs@0.11.0':
     optional: true

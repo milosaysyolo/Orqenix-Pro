@@ -1,6 +1,6 @@
 {
   "name": "@orqenix-pro/blast-radius",
-  "version": "0.5.0-phase-5",
+  "version": "0.5.0",
   "description": "Per-scope write quotas + cap propagation for blast-radius containment (Orqenix-Pro)",
   "license": "BUSL-1.1",
   "author": {
@@ -44,7 +44,7 @@
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/",
-    "provenance": true
+    "provenance": false
   },
   "engines": {
     "node": ">=20.0.0"
