@@ -1,4 +1,4 @@
-<!-- HEADER:START -->
+﻿<!-- HEADER:START -->
 <p align="center">
   <a href="https://orqenix.dev">
     <img src="./assets/logo-banner-pro.svg" alt="Orqenix-Pro" />
@@ -34,7 +34,7 @@
 
 <p align="center">
   <sub>
-    ⚠️ Orqenix-Pro is licensed under <strong>Business Source License 1.1</strong>.
+    âš ï¸ Orqenix-Pro is licensed under <strong>Business Source License 1.1</strong>.
     Each released version automatically converts to Apache 2.0 four years after its release date.
     Read the full <a href="./LICENSE">LICENSE</a>, or jump to the
     <a href="#-license-faq">License FAQ</a>.
@@ -57,49 +57,49 @@
 <hr/>
 <!-- HEADER:END -->
 
-## ⚖️ License at a glance
+## âš–ï¸ License at a glance
 
 > Plain-English summary, not legal advice. The authoritative terms live in [`./LICENSE`](./LICENSE).
 
-- ✅ **You may use Orqenix-Pro freely in production**, including inside paid products you ship to customers. Internal tools, SaaS backends, agencies, regulated enterprises, all fine.
-- ❌ **You may not offer Orqenix-Pro itself as a hosted or managed service** to third parties during the 4-year BSL window. Building your own product *with* Orqenix-Pro inside is fine. Reselling Orqenix-Pro *as* the product is not.
-- ⏳ **Each released version auto-converts to Apache 2.0** four years after its release date. `v0.5.0` (released 2026-06-03) converts on **2030-06-03**. Future versions carry their own Change Date.
+- âœ… **You may use Orqenix-Pro freely in production**, including inside paid products you ship to customers. Internal tools, SaaS backends, agencies, regulated enterprises, all fine.
+- âŒ **You may not offer Orqenix-Pro itself as a hosted or managed service** to third parties during the 4-year BSL window. Building your own product *with* Orqenix-Pro inside is fine. Reselling Orqenix-Pro *as* the product is not.
+- â³ **Each released version auto-converts to Apache 2.0** four years after its release date. `v0.5.0` (released 2026-06-03) converts on **2030-06-03**. Future versions carry their own Change Date.
 
 If your case does not fit either lane, see [Commercial inquiries](#-commercial-inquiries).
 
 <hr/>
 
-## ✨ What Pro adds
+## âœ¨ What Pro adds
 
 Orqenix-Pro is a **set of opt-in augmentations** that slot into the existing Orqenix architecture. You install the open-source Orqenix core first, then add the Pro packages you actually need. There is no Pro-only fork of the core.
 
 | Capability | Package | Why it matters |
 |---|---|---|
-| 🧠 **LLM-based Memory Distiller** | [`@orqenix-pro/memory-distiller-llm`](./packages/memory-distiller-llm) | Higher-quality semantic compression than the OSS heuristic distiller, with adaptive BYOK providers (GPT-4o-mini, Claude Haiku, Gemini Flash, DeepSeek V3). |
-| 🕸️ **Mesh Delegation Chains** | [`@orqenix-pro/mesh-delegation`](./packages/mesh-delegation) | Multi-hop capability delegation up to depth 8 with cap narrowing, remaining-hops enforcement, and provenance tagging. |
-| 💥 **Blast Radius Containment** | [`@orqenix-pro/blast-radius`](./packages/blast-radius) | Quota-based containment across 5 quota kinds (queries, tokens, bytes, delegations, mutations) with windowed tracking. |
-| 🗂️ **Polyglot Knowledge Backends** | [`kb-code-graph`](./packages/kb-code-graph), [`kb-embedding-lance`](./packages/kb-embedding-lance), [`kb-token-store`](./packages/kb-token-store) | Kuzu for the code graph, LanceDB for embeddings, LMDB for the token store. Drop-in adapters that share the OSS contract. |
-| 🔁 **Pro Migration Tooling** | [`@orqenix-pro/pro-migration`](./packages/pro-migration) | Reserved migration IDs 100 to 199, safe upgrades for OSS → Pro adapter swaps, per-KB rollback inside a 7-day window. |
+| ðŸ§  **LLM-based Memory Distiller** | [`@orqenix-pro/memory-distiller-llm`](./packages/memory-distiller-llm) | Higher-quality semantic compression than the OSS heuristic distiller, with adaptive BYOK providers (GPT-4o-mini, Claude Haiku, Gemini Flash, DeepSeek V3). |
+| ðŸ•¸ï¸ **Mesh Delegation Chains** | [`@orqenix-pro/mesh-delegation`](./packages/mesh-delegation) | Multi-hop capability delegation up to depth 8 with cap narrowing, remaining-hops enforcement, and provenance tagging. |
+| ðŸ’¥ **Blast Radius Containment** | [`@orqenix-pro/blast-radius`](./packages/blast-radius) | Quota-based containment across 5 quota kinds (queries, tokens, bytes, delegations, mutations) with windowed tracking. |
+| ðŸ—‚ï¸ **Polyglot Knowledge Backends** | [`kb-code-graph`](./packages/kb-code-graph), [`kb-embedding-lance`](./packages/kb-embedding-lance), [`kb-token-store`](./packages/kb-token-store) | Kuzu for the code graph, LanceDB for embeddings, LMDB for the token store. Drop-in adapters that share the OSS contract. |
+| ðŸ” **Pro Migration Tooling** | [`@orqenix-pro/pro-migration`](./packages/pro-migration) | Reserved migration IDs 100 to 199, safe upgrades for OSS â†’ Pro adapter swaps, per-KB rollback inside a 7-day window. |
 
 <hr/>
 
-## 📊 OSS vs Pro
+## ðŸ“Š OSS vs Pro
 
 > Pro is not "better OSS". Pro is **for different workload sizes and operational needs**. Pick by workload fit.
 
 | Area | Orqenix (OSS, Apache 2.0) | Orqenix-Pro (BSL 1.1) |
 |---|---|---|
 | **License** | Apache 2.0 | BSL 1.1, converts to Apache 2.0 after 4 years |
-| **Scope identity** | ✅ Ed25519 + BLAKE3 scope_id | uses OSS |
-| **Local mesh, capability tokens** | ✅ Direct links, depth 1 | ✅ Direct links + delegation chains depth 1 to 8 with cap narrowing |
-| **Capability verify latency** | ✅ p95 < 10 ms (SQLite token store) | ✅ p95 < 1 ms (LMDB token store) |
-| **CodeKB** | ✅ SQLite + sqlite-vec | ✅ + Kuzu graph for multi-hop queries |
-| **Embeddings** | ✅ sqlite-vec, recommended up to 50K vectors | ✅ + LanceDB ANN, scales to millions of vectors |
-| **ChatKB + diff-only storage** | ✅ Full | uses OSS |
-| **Memory distiller** | ✅ Heuristic, deterministic, offline | ✅ + LLM-based, BYOK, with fallback to heuristic |
-| **Blast radius** | ❌ Not enforced | ✅ 5 quota kinds, windowed, per-link override |
-| **Provenance tagging** | ✅ Per scope | ✅ Per scope + per delegation hop |
-| **Audit log (BLAKE3, tamper-evident)** | ✅ | uses OSS |
+| **Scope identity** | âœ… Ed25519 + BLAKE3 scope_id | uses OSS |
+| **Local mesh, capability tokens** | âœ… Direct links, depth 1 | âœ… Direct links + delegation chains depth 1 to 8 with cap narrowing |
+| **Capability verify latency** | âœ… p95 < 10 ms (SQLite token store) | âœ… p95 < 1 ms (LMDB token store) |
+| **CodeKB** | âœ… SQLite + sqlite-vec | âœ… + Kuzu graph for multi-hop queries |
+| **Embeddings** | âœ… sqlite-vec, recommended up to 50K vectors | âœ… + LanceDB ANN, scales to millions of vectors |
+| **ChatKB + diff-only storage** | âœ… Full | uses OSS |
+| **Memory distiller** | âœ… Heuristic, deterministic, offline | âœ… + LLM-based, BYOK, with fallback to heuristic |
+| **Blast radius** | âŒ Not enforced | âœ… 5 quota kinds, windowed, per-link override |
+| **Provenance tagging** | âœ… Per scope | âœ… Per scope + per delegation hop |
+| **Audit log (BLAKE3, tamper-evident)** | âœ… | uses OSS |
 | **Migration IDs** | 1 to 99 | 100 to 199 |
 | **Recommended for** | Solo devs, small teams, repos under 100K files | Large monorepos, multi-team, regulated environments |
 
@@ -107,7 +107,7 @@ If none of the Pro rows describe your problem yet, OSS is the right answer. You 
 
 <hr/>
 
-## 🚀 Quick Start
+## ðŸš€ Quick Start
 
 Pro requires Orqenix OSS. Install both:
 
@@ -135,7 +135,7 @@ pnpm add @orqenix-pro/blast-radius
 Install the Pro CLI globally (requires a Pro license token):
 
 ```bash
-npm install -g @orqenix-pro/cli@^0.6.1
+npm install -g @orqenix-pro/cli@^0.6.4
 ```
 
 Upgrade your existing scope to Pro tier:
@@ -159,7 +159,7 @@ Need a deeper guide? Read [`docs/migration-from-oss.md`](./docs/migration-from-o
 
 <hr/>
 
-## 📦 Packages
+## ðŸ“¦ Packages
 
 | Package | Version | Purpose | Migration ID |
 |---|---|---|---|
@@ -176,7 +176,7 @@ Full charter gate matrix lives in [`docs/charter-gates.md`](./docs/charter-gates
 
 <hr/>
 
-## 🎚️ When do you need Pro
+## ðŸŽšï¸ When do you need Pro
 
 Use these signals to decide. If none apply, OSS is the right answer.
 
@@ -193,36 +193,36 @@ If you are unsure, run with OSS first. The migration path is documented, per-KB,
 
 <hr/>
 
-## 🏗️ Architecture deltas
+## ðŸ—ï¸ Architecture deltas
 
 Pro slots into the same 6-layer architecture as OSS. The diagram below highlights only the Pro-specific surfaces. Everything else is OSS, unchanged.
 
 ```
-┌──────────────────────────────────────────────────────────┐
-│ L6  Application (agents, CLI, editors)                   │
-├──────────────────────────────────────────────────────────┤
-│ L5  Memory                                               │
-│     ┌──────────────────────────────┐                     │
-│     │ memory-distiller-llm (Pro)   │  ◄── BYOK provider  │
-│     └──────────────────────────────┘                     │
-├──────────────────────────────────────────────────────────┤
-│ L4  Mesh + Identity                                      │
-│     ┌──────────────────────────────┐                     │
-│     │ mesh-delegation (Pro)        │  ◄── depth 1 to 8   │
-│     │ blast-radius   (Pro)         │  ◄── 5 quota kinds  │
-│     └──────────────────────────────┘                     │
-├──────────────────────────────────────────────────────────┤
-│ L3  Knowledge (4 KBs, adapter-driven)                    │
-├──────────────────────────────────────────────────────────┤
-│ L2  Storage                                              │
-│     ┌──────────────────────────────────┐                 │
-│     │ kb-code-graph      (Kuzu,  Pro)  │                 │
-│     │ kb-embedding-lance (Lance, Pro)  │                 │
-│     │ kb-token-store     (LMDB,  Pro)  │                 │
-│     └──────────────────────────────────┘                 │
-├──────────────────────────────────────────────────────────┤
-│ L1  Platform (Node, native bindings, fs)                 │
-└──────────────────────────────────────────────────────────┘
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚ L6  Application (agents, CLI, editors)                   â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚ L5  Memory                                               â”‚
+â”‚     â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”                     â”‚
+â”‚     â”‚ memory-distiller-llm (Pro)   â”‚  â—„â”€â”€ BYOK provider  â”‚
+â”‚     â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜                     â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚ L4  Mesh + Identity                                      â”‚
+â”‚     â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”                     â”‚
+â”‚     â”‚ mesh-delegation (Pro)        â”‚  â—„â”€â”€ depth 1 to 8   â”‚
+â”‚     â”‚ blast-radius   (Pro)         â”‚  â—„â”€â”€ 5 quota kinds  â”‚
+â”‚     â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜                     â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚ L3  Knowledge (4 KBs, adapter-driven)                    â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚ L2  Storage                                              â”‚
+â”‚     â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”                 â”‚
+â”‚     â”‚ kb-code-graph      (Kuzu,  Pro)  â”‚                 â”‚
+â”‚     â”‚ kb-embedding-lance (Lance, Pro)  â”‚                 â”‚
+â”‚     â”‚ kb-token-store     (LMDB,  Pro)  â”‚                 â”‚
+â”‚     â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜                 â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚ L1  Platform (Node, native bindings, fs)                 â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
 
 Deep dives:
@@ -234,7 +234,7 @@ Deep dives:
 
 <hr/>
 
-## 🛠️ Configuration recipes
+## ðŸ› ï¸ Configuration recipes
 
 ### Recipe 1, enable LLM distillation with Claude Haiku
 
@@ -279,7 +279,7 @@ More recipes live in [`docs/recipes/`](./docs/recipes/).
 
 <hr/>
 
-## 🔐 License FAQ
+## ðŸ” License FAQ
 
 **Q: Can I use Orqenix-Pro inside a SaaS product I sell to customers?**
 Yes. Selling a product *built with* Orqenix-Pro is fine. The only restricted use case is offering Orqenix-Pro itself as a hosted service.
@@ -301,11 +301,11 @@ See [Commercial inquiries](#-commercial-inquiries).
 
 <hr/>
 
-## 💼 Commercial inquiries
+## ðŸ’¼ Commercial inquiries
 
 For commercial licenses, OEM agreements, priority support, or terms outside BSL 1.1:
 
-📧 `licensing@orqenix.dev`
+ðŸ“§ `licensing@orqenix.dev`
 
 Please include:
 
@@ -317,22 +317,22 @@ We typically respond within 5 business days.
 
 <hr/>
 
-## 🤝 Community
+## ðŸ¤ Community
 
 Community lives in the **open-source repo** so OSS and Pro users meet in one place:
 
-- 💬 [GitHub Discussions](https://github.com/milosaysyolo/Orqenix/discussions), the primary forum
-- 📌 [Announcements + waitlists for Discord and Twitter](https://github.com/milosaysyolo/Orqenix/discussions/categories/announcements)
-- 🐛 Bugs for **Pro** packages, [open an issue here](https://github.com/milosaysyolo/Orqenix-Pro/issues)
-- 🐛 Bugs for **OSS** packages, [open them in the OSS repo](https://github.com/milosaysyolo/Orqenix/issues)
-- 🔐 Security disclosures, please follow [`./SECURITY.md`](./SECURITY.md)
-- 📜 License questions, use the [License question issue template](./.github/ISSUE_TEMPLATE/license_question.yml)
+- ðŸ’¬ [GitHub Discussions](https://github.com/milosaysyolo/Orqenix/discussions), the primary forum
+- ðŸ“Œ [Announcements + waitlists for Discord and Twitter](https://github.com/milosaysyolo/Orqenix/discussions/categories/announcements)
+- ðŸ› Bugs for **Pro** packages, [open an issue here](https://github.com/milosaysyolo/Orqenix-Pro/issues)
+- ðŸ› Bugs for **OSS** packages, [open them in the OSS repo](https://github.com/milosaysyolo/Orqenix/issues)
+- ðŸ” Security disclosures, please follow [`./SECURITY.md`](./SECURITY.md)
+- ðŸ“œ License questions, use the [License question issue template](./.github/ISSUE_TEMPLATE/license_question.yml)
 
 By participating, you agree to the [Code of Conduct](./CODE_OF_CONDUCT.md).
 
 <hr/>
 
-## 🙏 Acknowledgements
+## ðŸ™ Acknowledgements
 
 Orqenix-Pro stands on the shoulders of the open-source teams behind
 [`kuzu`](https://kuzudb.com/),
@@ -343,7 +343,7 @@ and of course the [Orqenix OSS](https://github.com/milosaysyolo/Orqenix) core th
 
 <hr/>
 
-## 📄 License
+## ðŸ“„ License
 
 - **License**: Business Source License 1.1, see [`./LICENSE`](./LICENSE).
 - **Change License**: Apache License 2.0.
