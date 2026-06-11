@@ -1,4 +1,22 @@
-# Changelog — Orqenix-Pro
+﻿## v0.6.4-phase-6 - 2026-06-11 (Sprint D + closeout)
+
+### Fixed
+- Closes GAP #1 from v0.6.1-phase-6: all 7 OSS deps use clean caret semver
+- Fixes workspace:* protocol bug in 6 OSS packages (Sprint D)
+- Fixes file: paths bug in 3 Pro packages (Sprint D)
+- Full forward-compatibility achieved across 13 deps
+
+### Changed
+- All Phase 6 OSS @orqenix/* packages republished without -phase-6 suffix
+- Pro deps (blast-radius, mesh-delegation, polyglot-backend) at v0.5.1
+
+### Deprecated
+- @orqenix-pro/cli@0.6.0-phase-6 through v0.6.3-phase-6 (use ^0.6.4)
+- 14 stale npm versions across OSS and Pro packages
+
+### Install
+npm install -g @orqenix-pro/cli@^0.6.4
+# Changelog â€” Orqenix-Pro
 
 All notable changes to the Orqenix-Pro repo. Format based on Keep a Changelog 1.1.
 
@@ -22,41 +40,41 @@ All notable changes to the Orqenix-Pro repo. Format based on Keep a Changelog 1.
 
 - From Phase 7 forward, package versions use clean semver without phase-N suffix
 
-## [0.5.0-phase-5] — 2026-06-03
+## [0.5.0-phase-5] â€” 2026-06-03
 
 ### Summary
 
-Phase 5 Pro Tier. 8 packages including OSS↔Pro interop test suite, ~8,320 LOC,
-4 Pro charter gates with 41 checks, plus 21 OSS↔Pro interop test cases. ALL GREEN.
+Phase 5 Pro Tier. 8 packages including OSSâ†”Pro interop test suite, ~8,320 LOC,
+4 Pro charter gates with 41 checks, plus 21 OSSâ†”Pro interop test cases. ALL GREEN.
 
 ### Added
 
 #### Polyglot storage (Part 10)
-- `@orqenix-pro/kb-code-graph` — Kuzu graph DB for code symbols and edges,
+- `@orqenix-pro/kb-code-graph` â€” Kuzu graph DB for code symbols and edges,
   InMemoryGraphDriver fallback for cross-platform tests
-- `@orqenix-pro/kb-embedding-lance` — LanceDB vector ANN search with 3 metrics
+- `@orqenix-pro/kb-embedding-lance` â€” LanceDB vector ANN search with 3 metrics
   (cosine, l2, dot), InMemoryVectorDriver fallback
-- `@orqenix-pro/kb-token-store` — LMDB-backed token verifier cache with hit /
+- `@orqenix-pro/kb-token-store` â€” LMDB-backed token verifier cache with hit /
   miss / expiration tracking, InMemoryKvDriver fallback
-- `@orqenix-pro/pro-migration` — OSS to Pro backend migration with count
+- `@orqenix-pro/pro-migration` â€” OSS to Pro backend migration with count
   verification, throws ProMigrationVerificationError on count drift
 
 #### LLM distiller and mesh extensions (Part 11)
-- `@orqenix-pro/memory-distiller-llm` — 13-type structured extraction with
+- `@orqenix-pro/memory-distiller-llm` â€” 13-type structured extraction with
   2-pass verification, 3 prompt styles, idempotent storage into OSS MemoryTierStore
-- `@orqenix-pro/mesh-delegation` — multi-hop delegation chains up to depth 8 with
+- `@orqenix-pro/mesh-delegation` â€” multi-hop delegation chains up to depth 8 with
   capability narrowing and per-hop tokens
-- `@orqenix-pro/blast-radius` — 5 quota kinds with time-windowed counters,
+- `@orqenix-pro/blast-radius` â€” 5 quota kinds with time-windowed counters,
   DEFAULT_QUOTAS preset for sensible CR v7.1 defaults
 
-#### OSS↔Pro interop validation
-- `@orqenix-pro/integration-tests` — 8 scenarios with 21 test cases verifying
+#### OSSâ†”Pro interop validation
+- `@orqenix-pro/integration-tests` â€” 8 scenarios with 21 test cases verifying
   every Pro package against its OSS counterpart
 
 ### Charter Gates
 
 G6-pro (11 criteria), G18-pro (13 criteria), G36-pro (8 criteria), G37-pro
-(9 criteria) — 4 Pro gates, 41 checks, ALL PASS.
+(9 criteria) â€” 4 Pro gates, 41 checks, ALL PASS.
 
 ### License
 
@@ -79,5 +97,5 @@ Apache 2.0.
 | LOC | ~8,320 |
 | Charter Gates (Pro) | 4 |
 | Charter Gate Checks | 41 |
-| OSS↔Pro interop test cases | 21 |
+| OSSâ†”Pro interop test cases | 21 |
 | Unit tests | ~96 |
