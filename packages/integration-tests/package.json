@@ -5,7 +5,9 @@
   "description": "OSS↔Pro interoperability test suite (Orqenix-Pro)",
   "license": "BUSL-1.1",
   "type": "module",
-  "scripts": { "test": "vitest run" },
+  "scripts": {
+    "test": "vitest run"
+  },
   "dependencies": {
     "@orqenix/core": "*",
     "@orqenix/storage-sqlite": "*",
@@ -29,5 +31,8 @@
     "@orqenix-pro/mesh-delegation": "workspace:*",
     "@orqenix-pro/blast-radius": "workspace:*"
   },
-  "devDependencies": { "vitest": "^1.6.0", "typescript": "^5.5.0" }
+  "devDependencies": {
+    "vitest": "^1.6.0",
+    "typescript": "^5.5.0"
+  }
 }

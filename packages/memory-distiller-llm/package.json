@@ -57,12 +57,12 @@
     "prepublishOnly": "pnpm clean && pnpm build && pnpm test"
   },
   "dependencies": {
-    "@orqenix/core": "file:../../../Orqenix/packages/core",
-    "@orqenix/storage-sqlite": "file:../../../Orqenix/packages/storage-sqlite",
-    "@orqenix/memory-tiers": "file:../../../Orqenix/packages/memory-tiers",
-    "@orqenix/memory-distiller": "file:../../../Orqenix/packages/memory-distiller",
-    "@orqenix/llm-adapter-ollama": "file:../../../Orqenix/packages/llm-adapter-ollama",
-    "@orqenix/kb-chat": "file:../../../Orqenix/packages/kb-chat",
+    "@orqenix/core": "^0.5.0",
+    "@orqenix/storage-sqlite": "^0.5.0",
+    "@orqenix/memory-tiers": "^0.5.0",
+    "@orqenix/memory-distiller": "^0.5.0",
+    "@orqenix/llm-adapter-ollama": "^0.5.0",
+    "@orqenix/kb-chat": "^0.5.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {

@@ -57,8 +57,8 @@
     "prepublishOnly": "pnpm clean && pnpm build && pnpm test"
   },
   "dependencies": {
-    "@orqenix/core": "file:../../../Orqenix/packages/core",
-    "@orqenix/storage-sqlite": "file:../../../Orqenix/packages/storage-sqlite",
+    "@orqenix/core": "^0.5.0",
+    "@orqenix/storage-sqlite": "^0.5.0",
     "@lancedb/lancedb": "^0.5.0",
     "zod": "^3.23.8"
   },
