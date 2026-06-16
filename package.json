@@ -88,7 +88,9 @@
       "@orqenix/workspace": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\workspace",
       "@orqenix/prompt-rewriter": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\prompt-rewriter",
       "@orqenix/mesh-transport-core": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\mesh-transport-core",
-      "@orqenix/mesh-observability": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\mesh-observability"
+      "@orqenix/mesh-observability": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\mesh-observability",
+      "@orqenix/self-learning-detection": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\self-learning-detection",
+      "@orqenix/self-learning-observer": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\self-learning-observer"
     }
   }
 }
