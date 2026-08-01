@@ -1,6 +1,8 @@
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { writeFile, mkdir } from "node:fs/promises";
+import { existsSync } from "node:fs";
+import { generateKeyPairSync } from "node:crypto";
 import {
   signLicense,
   verifyLicense,
@@ -15,6 +17,21 @@ const FIXTURES = join(ROOT, "fixtures");
 
 const PRIV = join(KEYS, "test-private.pem");
 const PUB = join(KEYS, "test-public.pem");
+
+// test-private.pem is gitignored (see keys/.gitignore); generate the keypair
+// when missing so `pnpm test:license-grace` works from a fresh checkout.
+async function ensureKeys() {
+  if (existsSync(PRIV) && existsSync(PUB)) return;
+  await mkdir(KEYS, { recursive: true });
+  const { publicKey, privateKey } = generateKeyPairSync("ed25519");
+  await writeFile(PUB, publicKey.export({ format: "pem", type: "spki" }).toString(), "utf8");
+  await writeFile(
+    PRIV,
+    privateKey.export({ format: "pem", type: "pkcs8" }).toString(),
+    "utf8",
+  );
+  console.log("Generated missing test keypair in keys/");
+}
 
 type Case = {
   name: string;
@@ -116,6 +133,7 @@ const cases: Case[] = [
 ];
 
 async function run() {
+  await ensureKeys();
   await mkdir(FIXTURES, { recursive: true });
 
   let failed = 0;

@@ -15,6 +15,8 @@
     "test": "pnpm -r test",
     "lint": "pnpm -r lint",
     "verify-pro": "pnpm tsx scripts/gates/run-all-pro.ts",
+    "generate-test-keys": "tsx scripts/generate-test-keys.ts",
+    "test:license-grace": "tsx scripts/test-license-grace.ts",
     "clean": "pnpm -r clean && rm -rf node_modules",
     "typecheck": "pnpm -r --filter=\"./packages/*\" typecheck",
     "pre-publish-check": "pnpm tsx scripts/pre-publish-check.ts",
@@ -68,29 +70,6 @@
       "esbuild",
       "@swc/core"
     ],
-    "overrides": {
-      "@orqenix/core": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\core",
-      "@orqenix/capability-tokens": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\capability-tokens",
-      "@orqenix/scope-identity": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\scope-identity",
-      "@orqenix/storage-sqlite": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\storage-sqlite",
-      "@orqenix/storage-diff": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\storage-diff",
-      "@orqenix/memory-tiers": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\memory-tiers",
-      "@orqenix/memory-distiller": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\memory-distiller",
-      "@orqenix/llm-adapter-ollama": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\llm-adapter-ollama",
-      "@orqenix/kb-chat": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\kb-chat",
-      "@orqenix/mesh-routing": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\mesh-routing",
-      "@orqenix/scope-link": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\scope-link",
-      "@orqenix/provenance": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\provenance",
-      "@orqenix/hooks": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\hooks",
-      "@orqenix/telemetry": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\telemetry",
-      "@orqenix/detach": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\detach",
-      "@orqenix/audit-log": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\audit-log",
-      "@orqenix/workspace": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\workspace",
-      "@orqenix/prompt-rewriter": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\prompt-rewriter",
-      "@orqenix/mesh-transport-core": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\mesh-transport-core",
-      "@orqenix/mesh-observability": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\mesh-observability",
-      "@orqenix/self-learning-detection": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\self-learning-detection",
-      "@orqenix/self-learning-observer": "C:\\Users\\vnet-1-vm-c1\\Documents\\GitHub\\Orqenix\\packages\\self-learning-observer"
-    }
+    "overrides": {}
   }
 }
