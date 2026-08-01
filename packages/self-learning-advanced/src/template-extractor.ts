@@ -40,12 +40,9 @@ export class TemplateExtractor {
     return templates;
   }
 
-  /** Reduces a command to its structural shape (tokens, ignoring values) */
+  /** Reduces a command to its structural shape (token count) */
   private structuralShape(command: string): string {
-    return command
-      .split(/\s+/)
-      .map((tok) => (/^['"-]/.test(tok) || /\d/.test(tok) ? '<arg>' : tok))
-      .join(' ');
+    return String(command.split(/\s+/).length);
   }
 
   /** Builds a template by replacing varying tokens with {argN} */

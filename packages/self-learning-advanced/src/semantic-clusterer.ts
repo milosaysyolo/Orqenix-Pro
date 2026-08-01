@@ -49,25 +49,9 @@ export class SemanticClusterer {
     return clusters;
   }
 
-  /** Jaccard similarity over action-kind bigrams */
+  /** Jaccard similarity over action-kind sets */
   private similarity(a: string[], b: string[]): number {
-    const bigramsA = this.bigrams(a);
-    const bigramsB = this.bigrams(b);
-    if (bigramsA.size === 0 && bigramsB.size === 0) {
-      // Compare as sets of action kinds
-      const setA = new Set(a);
-      const setB = new Set(b);
-      return this.jaccard(setA, setB);
-    }
-    return this.jaccard(bigramsA, bigramsB);
-  }
-
-  private bigrams(seq: string[]): Set<string> {
-    const grams = new Set<string>();
-    for (let i = 0; i < seq.length - 1; i++) {
-      grams.add(`${seq[i]}→${seq[i + 1]}`);
-    }
-    return grams;
+    return this.jaccard(new Set(a), new Set(b));
   }
 
   private jaccard(a: Set<string>, b: Set<string>): number {
